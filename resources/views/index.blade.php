@@ -43,7 +43,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html"><span>Bootslander</span></a></h1>
+        <h1><a href="index.html"><span>Dashboard</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -71,8 +71,7 @@
       <div class="row justify-content-between">
         <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
           <div data-aos="zoom-out">
-            <h1>Build Your Landing Page With <span>Bootstlander</span></h1>
-            <h2>We are team of talented designers making websites with Bootstrap</h2>
+            <h1>DATA WARGA MISKIN NON-DTKS WILAYAH <span>KECAMATAN GIRI</span></h1>
             <div class="text-center text-lg-start">
               <a href="{{ route('login')}}" class="btn-get-started scrollto">Login</a>
               <a href="{{ route('register')}}" class="btn-get-started scrollto">Register</a>
