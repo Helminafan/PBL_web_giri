@@ -119,7 +119,7 @@
           </div>
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column  justify-content-center align-items-stretch py-5 px-lg-5" data-aos="fade-left">
-            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
+            <h3>KANTOR LURAH GIRI</h3>
             <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
 
             <!-- <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
