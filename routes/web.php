@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PenatabanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,13 @@ Route::middleware([
         return view('admin.main.index');
     })->name('dashboard');
     
+});
+Route::prefix('Penataban')->group(function(){
+    Route::get('/view',[PenatabanController::class, 'index'])->name('penataban.view');
+    // Route::get('/add',[UserController::class, 'UserAdd'])->name('user.add');
+    // Route::post('/store',[UserController::class, 'UserStore'])->name('users.store');
+    // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
+    // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
+    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
 });
 Route::get('/auth/logout', [AdminController::class, 'logout'])->name('admin.logout')->middleware('auth');
