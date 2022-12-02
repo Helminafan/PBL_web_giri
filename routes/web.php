@@ -26,5 +26,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('admin.main.index');
     })->name('dashboard');
+    
 });
 Route::get('/auth/logout', [AdminController::class, 'logout'])->name('admin.logout')->middleware('auth');
