@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers\API\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $validateData = $request->validate([
-            'name' => 'required|max:25',
-            'email' => 'email | required | unique:users',
-            'password' => 'required | confirmed'
-        ]);
+        // $validateData = $request->validate([
+        //     'name' => 'required|max:25',
+        //     'email' => 'email | required | unique:users',
+        //     'password' => 'required | confirmed'
+        // ]);
 
         // create user
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            
         ]);
 
         $user->save();
