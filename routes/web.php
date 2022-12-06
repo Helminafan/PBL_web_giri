@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\KelurahanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,6 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::get('/auth/logout', [AdminController::class, 'logout'])->name('admin.logout')->middleware('auth');
+
+
+Route::get('/kelurahan1/view', [KelurahanController::class, 'Kelurahan1View'])->name('kelurahan1.view');
