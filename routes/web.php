@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PenatabanController;
 use Illuminate\Support\Facades\Route;
 
 /*
