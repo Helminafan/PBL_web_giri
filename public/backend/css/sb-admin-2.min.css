@@ -16,7 +16,11 @@
     --red: #e74a3b;
     --orange: #fd7e14;
     --yellow: #f6c23e;
+<<<<<<< HEAD
     --green: #1cc88a;
+=======
+    --green: #11c720;
+>>>>>>> alif
     --teal: #20c9a6;
     --cyan: #36b9cc;
     --white: #fff;
@@ -9113,8 +9117,13 @@ a:focus {
     animation-timing-function: opacity cubic-bezier(0, 1, 0.4, 1);
 }
 .bg-gradient-primary {
+<<<<<<< HEAD
     background-color: #4e73df;
     background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+=======
+    background-color: #11c720;
+    background-image: linear-gradient(180deg, #11c720 10%, #224abe 100%);
+>>>>>>> alif
     background-size: cover;
 }
 .bg-gradient-secondary {
@@ -9926,7 +9935,11 @@ a:focus {
     }
 }
 .bg-login-image {
+<<<<<<< HEAD
      background-image: url("../img/giri.jpeg");
+=======
+    background: url("../img/giri.jpeg");
+>>>>>>> alif
     background-position: center;
     background-size: cover;
 }
