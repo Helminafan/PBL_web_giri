@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GiriController;
+use App\Http\Controllers\KelGiri;
+use App\Http\Controllers\mojopanggung;
 use App\Http\Controllers\PenatabanController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +44,24 @@ Route::prefix('Giri')->group(function () {
     Route::get('/view', [GiriController::class, 'index'])->name('giri.view');
     // Route::get('/add',[UserController::class, 'UserAdd'])->name('user.add');
     // Route::post('/store',[UserController::class, 'UserStore'])->name('users.store');
+    // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
+    // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
+    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
+});
+
+Route::prefix('KelGiri')->group(function () {
+    Route::get('/view', [KelGiri::class, 'index'])->name('kelgiri.view');
+    // Route::get('/add',[UserController::class, 'UserAdd'])->name('user.add');
+    // Route::post('/store',[UserController::class, 'UserStore'])->name('users.store');
+    // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
+    // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
+    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
+});
+
+Route::prefix('mojopanggung')->group(function () {
+    Route::get('/view', [mojopanggung::class, 'index'])->name('mojopanggung.view');
+    Route::get('/add',[mojopanggung::class, 'create'])->name('mojopanggung.add');
+    Route::post('/store',[mojopanggung::class, 'store'])->name('mojopanggung.store');
     // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
     // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
     // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
