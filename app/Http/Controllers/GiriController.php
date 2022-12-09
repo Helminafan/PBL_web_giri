@@ -13,7 +13,7 @@ class GiriController extends Controller
      */
     public function index()
     {
-        return view("admin.main.tabel2");
+        return view("admin.main.kel_giri.view_kelgiri");
     }
 
     /**
@@ -23,7 +23,8 @@ class GiriController extends Controller
      */
     public function create()
     {
-        //
+        // dd('Berhasil');
+        return view('admin.main.kel_giri.add_kelgiri');
     }
 
     /**

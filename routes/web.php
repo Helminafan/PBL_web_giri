@@ -40,7 +40,7 @@ Route::prefix('Penataban')->group(function () {
 
 Route::prefix('Giri')->group(function () {
     Route::get('/view', [GiriController::class, 'index'])->name('giri.view');
-    // Route::get('/add',[UserController::class, 'UserAdd'])->name('user.add');
+    Route::get('/add', [GiriController::class, 'create'])->name('giri.add');
     // Route::post('/store',[UserController::class, 'UserStore'])->name('users.store');
     // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
     // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
