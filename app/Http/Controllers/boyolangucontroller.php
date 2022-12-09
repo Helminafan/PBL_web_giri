@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\warga;
 use Illuminate\Http\Request;
 
 class boyolangucontroller extends Controller
@@ -13,7 +14,8 @@ class boyolangucontroller extends Controller
      */
     public function index()
     {
-        return view('admin.main.boyolangu.view_boyolangu');
+        $data = warga::all();
+        return view('admin.main.boyolangu.view_boyolangu', compact('data'));
     }
 
     /**
