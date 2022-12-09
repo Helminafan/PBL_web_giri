@@ -22,9 +22,9 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    {{-- <div class="sidebar-heading">
         Interface
-    </div>
+    </div> --}}
 
     <!-- Nav Item - Pages Collapse Menu -->
 
@@ -33,6 +33,9 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>GIRI</span></a>
     </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+
     <li class="nav-item active">
         <a class="nav-link" href="{{route('penataban.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -84,7 +87,7 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    {{-- <div class="sidebar-heading">
         Addons
     </div>
 
@@ -120,10 +123,10 @@
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    {{-- <hr class="sidebar-divider d-none d-md-block"> --}}
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
