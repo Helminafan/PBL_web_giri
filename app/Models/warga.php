@@ -11,4 +11,11 @@ class warga extends Model
     protected $table = 'warga';
     protected $primaryKey = 'id';
     public $timestamps = true;
+    protected $fillable = [
+        'nama_warga',
+        'alamat',
+        'no_hp',
+        'kelurahan',
+        'foto_ktp',
+    ];
 }

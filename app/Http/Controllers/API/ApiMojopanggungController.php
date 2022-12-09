@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\warga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class MojopanggungController extends Controller
+class ApiMojopanggungController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,12 @@ class MojopanggungController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('warga')
+        ->where('kelurahan', '=', 'mojopanggung')
+        ->get();
+        return response()->json([
+            'data' => $data,
+        ], 200);
     }
 
     /**
@@ -24,7 +31,7 @@ class MojopanggungController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +42,15 @@ class MojopanggungController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+        $data = new warga();
+        $data->nama_warga = $request->nama_warga;
+        $data->alamat = $request->alamat;
+        $data->no_hp = $request->no_hp;
+        $data->foto_ktp = $request->foto_ktp;
+        $data->kelurahan = "mojopanggung";
+        $data->save();
+        return response()->json($data, 201);
     }
 
     /**

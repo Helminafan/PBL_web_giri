@@ -11,11 +11,11 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        // $validateData = $request->validate([
-        //     'name' => 'required|max:25',
-        //     'email' => 'email | required | unique:users',
-        //     'password' => 'required | confirmed'
-        // ]);
+        $validateData = $request->validate([
+            'name' => 'required|max:25',
+            'email' => 'email | required | unique:users',
+            'password' => 'required | confirmed'
+        ]);
 
         // create user
         $user = new User([
@@ -47,13 +47,10 @@ class AuthController extends Controller
 
         $user = $request->user();
 
-        $tokenResult = $user->createToken('AccessToken');
-        $token = $tokenResult->token;
-        $token->save();
+        
 
         return response()->json([
-            'access_token' => $tokenResult->accessToken,
-            'token_id' => $token->id,
+            'token'         => $user->createToken("API TOKEN")->plainTextToken,
             'user_id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
