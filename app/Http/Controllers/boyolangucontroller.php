@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\warga;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class mojopanggung extends Controller
+class boyolangucontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,8 @@ class mojopanggung extends Controller
      */
     public function index()
     {
-        $data = DB::table('warga')
-        ->where('kelurahan', '=', 'mojopanggung')
-        ->get();
-        return view('admin.main.mojopanggung.view_mojopanggung', compact('data'));
+        $data = warga::all();
+        return view('admin.main.boyolangu.view_boyolangu', compact('data'));
     }
 
     /**
@@ -29,8 +25,7 @@ class mojopanggung extends Controller
      */
     public function create()
     {
-      
-        return view('admin.main.mojopanggung.add_mojopanggung');
+        return view('admin.main.boyolangu.add_boyolangu');
     }
 
     /**
@@ -52,12 +47,12 @@ class mojopanggung extends Controller
                 $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
             }
             $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "mojopanggung";
-            $data->save(); 
+            $data->kelurahan = "boyolangu";
+            $data->save();
         }
 
-        
-        return redirect()->route('mojopanggung.view')->with('success', 'Data Berhasil Ditambah');;
+
+        return redirect()->route('boyolangu.view')->with('success', 'Data Berhasil Ditambah');;
     }
 
     /**

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Models\warga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class mojopanggung extends Controller
+class ApiMojopanggungController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,9 @@ class mojopanggung extends Controller
         $data = DB::table('warga')
         ->where('kelurahan', '=', 'mojopanggung')
         ->get();
-        return view('admin.main.mojopanggung.view_mojopanggung', compact('data'));
+        return response()->json([
+            'data' => $data,
+        ], 200);
     }
 
     /**
@@ -29,8 +31,7 @@ class mojopanggung extends Controller
      */
     public function create()
     {
-      
-        return view('admin.main.mojopanggung.add_mojopanggung');
+        
     }
 
     /**
@@ -41,23 +42,15 @@ class mojopanggung extends Controller
      */
     public function store(Request $request)
     {
-        foreach ($request->nama_warga as $key => $nama_warga) {
-            $data = new warga();
-            $data->nama_warga = $nama_warga;
-            $data->alamat = $request->alamat[$key];
-            $data->no_hp = $request->no_hp[$key];
-            if ($data->foto_ktp = $request->file('foto_ktp')[$key]) {
-                $extension = $request->file('foto_ktp')[$key]->getClientOriginalExtension();
-                $newbaru = $request->nama_warga[$key] . '-' . now()->timestamp . '.' . $extension;
-                $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
-            }
-            $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "mojopanggung";
-            $data->save(); 
-        }
-
-        
-        return redirect()->route('mojopanggung.view')->with('success', 'Data Berhasil Ditambah');;
+    
+        $data = new warga();
+        $data->nama_warga = $request->nama_warga;
+        $data->alamat = $request->alamat;
+        $data->no_hp = $request->no_hp;
+        $data->foto_ktp = $request->foto_ktp;
+        $data->kelurahan = "mojopanggung";
+        $data->save();
+        return response()->json($data, 201);
     }
 
     /**
