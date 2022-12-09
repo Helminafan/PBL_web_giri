@@ -64,8 +64,16 @@ Route::prefix('KelGiri')->group(function () {
 
 Route::prefix('mojopanggung')->group(function () {
     Route::get('/view', [mojopanggung::class, 'index'])->name('mojopanggung.view');
-    Route::get('/add',[mojopanggung::class, 'create'])->name('mojopanggung.add');
-    Route::post('/store',[mojopanggung::class, 'store'])->name('mojopanggung.store');
+    Route::get('/add', [mojopanggung::class, 'create'])->name('mojopanggung.add');
+    Route::post('/store', [mojopanggung::class, 'store'])->name('mojopanggung.store');
+    // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
+    // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
+    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
+});
+Route::prefix('boyolangu')->group(function () {
+    Route::get('/view', [boyolanguController::class, 'index'])->name('boyolangu.view');
+    Route::get('/add', [boyolanguController::class, 'create'])->name('boyolangu.add');
+    Route::post('/store', [boyolanguController::class, 'store'])->name('boyolangu.store');
     // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
     // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
     // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');

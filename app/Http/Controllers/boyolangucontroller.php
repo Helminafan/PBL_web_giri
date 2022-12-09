@@ -52,7 +52,7 @@ class boyolangucontroller extends Controller
         }
 
 
-        return redirect()->route('mojopanggung.view')->with('success', 'Data Berhasil Ditambah');;
+        return redirect()->route('boyolangu.view')->with('success', 'Data Berhasil Ditambah');;
     }
 
     /**
