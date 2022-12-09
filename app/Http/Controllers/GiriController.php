@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\warga;
 use Illuminate\Http\Request;
 
 class GiriController extends Controller
@@ -13,7 +14,8 @@ class GiriController extends Controller
      */
     public function index()
     {
-        return view("admin.main.kel_giri.view_kelgiri");
+        $data = warga::all();
+        return view("admin.main.kel_giri.view_kelgiri", compact('data'));
     }
 
     /**

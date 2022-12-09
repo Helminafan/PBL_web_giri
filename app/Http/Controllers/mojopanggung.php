@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\warga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class mojopanggung extends Controller
@@ -15,7 +16,9 @@ class mojopanggung extends Controller
      */
     public function index()
     {
-        $data = warga::all();
+        $data = DB::table('warga')
+        ->where('kelurahan', '=', 'mojopanggung')
+        ->get();
         return view('admin.main.mojopanggung.view_mojopanggung', compact('data'));
     }
 
