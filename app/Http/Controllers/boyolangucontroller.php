@@ -36,7 +36,23 @@ class boyolangucontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        foreach ($request->nama_warga as $key => $nama_warga) {
+            $data = new warga();
+            $data->nama_warga = $nama_warga;
+            $data->alamat = $request->alamat[$key];
+            $data->no_hp = $request->no_hp[$key];
+            if ($data->foto_ktp = $request->file('foto_ktp')[$key]) {
+                $extension = $request->file('foto_ktp')[$key]->getClientOriginalExtension();
+                $newbaru = $request->nama_warga[$key] . '-' . now()->timestamp . '.' . $extension;
+                $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
+            }
+            $data['foto_ktp'] = $newbaru;
+            $data->kelurahan = "boyolangu";
+            $data->save();
+        }
+
+
+        return redirect()->route('mojopanggung.view')->with('success', 'Data Berhasil Ditambah');;
     }
 
     /**
