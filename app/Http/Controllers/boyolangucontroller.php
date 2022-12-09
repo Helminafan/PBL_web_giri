@@ -23,7 +23,7 @@ class boyolangucontroller extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.main.boyolangu.add_boyolangu');
     }
 
     /**
