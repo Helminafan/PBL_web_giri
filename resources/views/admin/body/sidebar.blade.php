@@ -47,7 +47,7 @@
             <span>Kel.Giri</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="" {{route('boyolangu.view')}}"">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Desa.Boyolangu</span></a>
     </li>
