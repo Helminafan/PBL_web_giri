@@ -29,7 +29,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
 
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('kelgiri.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>GIRI</span></a>
     </li>
@@ -62,7 +62,7 @@
             <span>Kel.Jambersari</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('mojopanggung.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Mojopanggung</span></a>
     </li>
