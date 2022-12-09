@@ -31,6 +31,16 @@ Route::middleware([
         return view('admin.main.index');
     })->name('dashboard');
 });
+
+Route::prefix('Giri')->group(function () {
+    Route::get('/view', [GiriController::class, 'index'])->name('giri.view');
+    // Route::get('/add', [GiriController::class, 'create'])->name('giri.add');
+    // Route::post('/store', [GiriController::class, 'store'])->name('giri.store');
+    // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
+    // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
+    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
+});
+
 Route::prefix('Penataban')->group(function () {
     Route::get('/view', [PenatabanController::class, 'index'])->name('penataban.view');
     // Route::get('/add',[UserController::class, 'UserAdd'])->name('user.add');
@@ -40,28 +50,21 @@ Route::prefix('Penataban')->group(function () {
     // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
 });
 
-Route::prefix('Giri')->group(function () {
-    Route::get('/view', [GiriController::class, 'index'])->name('giri.view');
-    Route::get('/add', [GiriController::class, 'create'])->name('giri.add');
-    // Route::post('/store',[UserController::class, 'UserStore'])->name('users.store');
-    // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
-    // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
-    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
-});
+
 
 Route::prefix('KelGiri')->group(function () {
     Route::get('/view', [KelGiri::class, 'index'])->name('kelgiri.view');
-    // Route::get('/add',[UserController::class, 'UserAdd'])->name('user.add');
-    // Route::post('/store',[UserController::class, 'UserStore'])->name('users.store');
+    Route::get('/add', [KelGiri::class, 'create'])->name('kelgiri.add');
+    Route::post('/store', [KelGiri::class, 'store'])->name('kelgiri.store');
     // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
     // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
-    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
+    // Route::get('/delete/{id}', [KelGiri::class, 'destroy'])->name('kelgiri.delete');
 });
 
 Route::prefix('mojopanggung')->group(function () {
     Route::get('/view', [mojopanggung::class, 'index'])->name('mojopanggung.view');
-    Route::get('/add',[mojopanggung::class, 'create'])->name('mojopanggung.add');
-    Route::post('/store',[mojopanggung::class, 'store'])->name('mojopanggung.store');
+    Route::get('/add', [mojopanggung::class, 'create'])->name('mojopanggung.add');
+    Route::post('/store', [mojopanggung::class, 'store'])->name('mojopanggung.store');
     // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
     // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
     // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
