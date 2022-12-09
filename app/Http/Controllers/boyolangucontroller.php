@@ -74,7 +74,8 @@ class boyolangucontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        $editData = warga::find($id);
+        return view('admin.main.boyolangu.edit_boyolangu', compact('editData'));
     }
 
     /**

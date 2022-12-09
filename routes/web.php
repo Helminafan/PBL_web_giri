@@ -74,8 +74,8 @@ Route::prefix('boyolangu')->group(function () {
     Route::get('/view', [boyolanguController::class, 'index'])->name('boyolangu.view');
     Route::get('/add', [boyolanguController::class, 'create'])->name('boyolangu.add');
     Route::post('/store', [boyolanguController::class, 'store'])->name('boyolangu.store');
-    // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
-    // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
+    Route::get('/edit/{id}', [boyolanguController::class, 'edit'])->name('boyolangu.edit');
+    Route::post('/update/{id}', [UserController::class, 'UserUpdate'])->name('boyolangu.update');
     // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
 });
 
