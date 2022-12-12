@@ -57,9 +57,9 @@ Route::prefix('KelGiri')->group(function () {
     Route::get('/view', [KelGiri::class, 'index'])->name('kelgiri.view');
     Route::get('/add', [KelGiri::class, 'create'])->name('kelgiri.add');
     Route::post('/store', [KelGiri::class, 'store'])->name('kelgiri.store');
-    // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
-    // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
-    // Route::get('/delete/{id}', [KelGiri::class, 'destroy'])->name('kelgiri.delete');
+    Route::get('/edit/{id}', [KelGiri::class, 'edit'])->name('kelgiri.edit');
+    Route::post('/update/{id}', [KelGiri::class, 'update'])->name('kelgiri.update');
+    Route::get('/delete/{id}', [KelGiri::class, 'destroy'])->name('kelgiri.delete');
 });
 
 Route::prefix('mojopanggung')->group(function () {

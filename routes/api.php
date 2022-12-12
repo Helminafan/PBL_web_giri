@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\ApiGiriController;
 use App\Http\Controllers\API\ApiMojopanggungController;
 use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\PengumumanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/add_mojopanggung', [ApiMojopanggungController::class, 'store']);
     Route::get('/view_mojopanggung', [ApiMojopanggungController::class, 'index']);
+    Route::post('/add_pengumuman', [PengumumanController::class, 'store']);
+    Route::get('/view_pengumunan', [PengumumanController::class, 'index']);
 });
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
