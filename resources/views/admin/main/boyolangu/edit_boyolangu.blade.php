@@ -8,7 +8,7 @@
         </div>
         <div class="co"><button class="btn btn-success add-more"> Tambah Data </button></div>
     </div>
-    <form class="user" method="POST" action="{{route('boyolangu.update', $editDfata->id)}}">
+    <form class="user" method="POST" action="{{route('boyolangu.update', $editData->id)}}">
         @csrf
         <div class="add-more-data">
             <div class="card shadow mb-4">

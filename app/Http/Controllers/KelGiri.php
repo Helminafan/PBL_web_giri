@@ -91,7 +91,7 @@ class KelGiri extends Controller
     public function update(Request $request, $id)
     {
         foreach ($request->nama_warga as $key => $nama_warga) {
-            $data = new warga();
+            $data = warga::find($id);
             $data->nama_warga = $nama_warga;
             $data->alamat = $request->alamat[$key];
             $data->no_hp = $request->no_hp[$key];
@@ -103,6 +103,10 @@ class KelGiri extends Controller
             $data['foto_ktp'] = $newbaru;
             $data->kelurahan = "Giri";
             $data->save();
+
+            $notifikasi = array();
+
+            return redirect()->route('kelgiri.view')->with('info', 'USER TELAH BERHASIL DIUBAH');
         }
     }
 
