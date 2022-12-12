@@ -7,7 +7,7 @@ use App\Models\warga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ApiMojopanggungController extends Controller
+class ApiGiriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class ApiMojopanggungController extends Controller
     public function index()
     {
         $data = DB::table('warga')
-            ->where('kelurahan', '=', 'mojopanggung')
+            ->where('kelurahan', '=', 'Giri')
             ->get();
         return response()->json([
             'data' => $data,
@@ -31,6 +31,7 @@ class ApiMojopanggungController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -41,13 +42,12 @@ class ApiMojopanggungController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = new warga();
         $data->nama_warga = $request->nama_warga;
         $data->alamat = $request->alamat;
         $data->no_hp = $request->no_hp;
         $data->foto_ktp = $request->foto_ktp;
-        $data->kelurahan = "mojopanggung";
+        $data->kelurahan = "Giri";
         $data->save();
         return response()->json($data, 201);
     }

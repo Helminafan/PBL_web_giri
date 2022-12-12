@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
+use App\Models\pengumuman as ModelsPengumuman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ApiGiriController extends Controller
+class PengumumanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,10 @@ class ApiGiriController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('pengumuman');
+        return response()->json([
+            'data' => $data,
+        ], 200);
     }
 
     /**
@@ -34,7 +40,12 @@ class ApiGiriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new ModelsPengumuman();
+        $data->judul_edaran = $request->judul_edaran;
+        $data->surat_edaran = $request->surat_edaran;
+
+        $data->save();
+        return response()->json($data, 201);
     }
 
     /**
