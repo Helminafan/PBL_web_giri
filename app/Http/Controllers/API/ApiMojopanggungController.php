@@ -42,8 +42,9 @@ class ApiMojopanggungController extends Controller
      */
     public function store(Request $request)
     {
-    
+        
         $data = new warga();
+        $data->nik = $request->nik;
         $data->nama_warga = $request->nama_warga;
         $data->alamat = $request->alamat;
         $data->no_hp = $request->no_hp;
@@ -72,7 +73,8 @@ class ApiMojopanggungController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = warga::find($id);
+        return response()->json($data);
     }
 
     /**
@@ -84,7 +86,15 @@ class ApiMojopanggungController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = warga::find($id);
+        $data->nik = $request->nik;
+        $data->nama_warga = $request->nama_warga;
+        $data->alamat = $request->alamat;
+        $data->no_hp = $request->no_hp;
+        $data->foto_ktp = $request->foto_ktp;
+        $data->kelurahan = "mojopanggung";
+        $data->update();
+        return response()->json($data, 201);
     }
 
     /**
@@ -95,6 +105,10 @@ class ApiMojopanggungController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dataWarga = warga::find($id);
+        $dataWarga->delete();
+        return response()->json(
+            ['messege' => 'Warga Berhasil Dihapus'], 
+            204);
     }
 }

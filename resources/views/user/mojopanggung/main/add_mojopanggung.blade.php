@@ -1,5 +1,5 @@
-@extends('admin.master.master')
-@section('content')
+@extends('user.mojopanggung.master.master')
+@section('user')
     <div class="container-fluid">
         <h1 class="h3 mb-2 text-gray-800">Tambah Data Warga Miskin Kecamatan Mojopanggung</h1>
         <div class="row d-flex justify-content-between">
