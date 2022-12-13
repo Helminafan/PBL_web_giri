@@ -16,7 +16,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $data = DB::table('pengumuman');
+        $data = ModelsPengumuman::all();
         return response()->json([
             'data' => $data,
         ], 200);
