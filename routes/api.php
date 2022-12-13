@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\ApiMojopanggungController;
 use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\kewargaancontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/add_mojopanggung', [ApiMojopanggungController::class, 'store']);
     Route::get('/view_mojopanggung', [ApiMojopanggungController::class, 'index']);
+    
+
 });
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+
+Route::post('/add_kewargaan', [kewargaancontroller::class, 'store']);
+Route::get('/view_kewargaan', [kewargaancontroller::class, 'index']);
