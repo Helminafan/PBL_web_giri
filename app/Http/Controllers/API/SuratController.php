@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\surat;
 use Illuminate\Http\Request;
 
 class SuratController extends Controller
@@ -14,7 +15,7 @@ class SuratController extends Controller
      */
     public function index()
     {
-        $data = DB::table('pengumuman');
+        $data = surat::all();
         return response()->json([
             'data' => $data,
         ], 200);
@@ -27,7 +28,6 @@ class SuratController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -38,7 +38,12 @@ class SuratController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new surat();
+        $data->tanggal_surat = $request->tanggal_surat;
+        $data->keterangan= $request->keterangan;
+        $data->status_surat = $request->status_surat;
+        $data->save();
+        return response()->json($data, 201);
     }
 
     /**
@@ -60,7 +65,8 @@ class SuratController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = surat::find($id);
+        return response()->json($data);
     }
 
     /**
@@ -72,7 +78,12 @@ class SuratController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = surat::find($id);
+        $data->tanggal_surat = $request->tanggal_surat;
+        $data->keterangan= $request->keterangan;
+        $data->status_surat = $request->status_surat;
+        $data->update();
+        return response()->json($data, 201);
     }
 
     /**
@@ -83,6 +94,10 @@ class SuratController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dataSurat = surat::find($id);
+        $dataSurat->delete();
+        return response()->json(
+            ['messege' => 'Surat Berhasil Dihapus'], 
+            204);
     }
 }

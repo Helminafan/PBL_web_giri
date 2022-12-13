@@ -4,6 +4,7 @@ use App\Http\Controllers\API\ApiGiriController;
 use App\Http\Controllers\API\ApiMojopanggungController;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\PengumumanController;
+use App\Http\Controllers\API\SuratController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+
+Route::post('/add_surat', [SuratController::class, 'store']);
+Route::get('/edit_surat/{id}', [SuratController::class, 'edit']);
+Route::put('/update_surat/{id}', [SuratController::class, 'update']);
+Route::get('/view_surat', [SuratController::class, 'index']);
+Route::delete('/delete_surat/{id}', [SuratController::class, 'destroy']);
+
