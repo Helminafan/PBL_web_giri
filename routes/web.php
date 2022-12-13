@@ -6,6 +6,7 @@ use App\Http\Controllers\KelGiri;
 use App\Http\Controllers\mojopanggung;
 use App\Http\Controllers\PenatabanController;
 use App\Http\Controllers\boyolanguController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,14 +24,18 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.main.index');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/dashboard',[HomeController::class, 'redirectUser'])->name('dashboard');
+});
+
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','role:admin'])->group(function () {
+    Route::get('/dashboard/admin', function () { return view('admin.main.index');})->name('admin.dashboard');
+});
+
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','role:mojopanggung'])->group(function () {
+    Route::get('/home', function () {
+        return view('user.mojopanggung.main.index');
+    })->name('mojopanggung.dashboard');
 });
 
 Route::prefix('Giri')->group(function () {
@@ -66,14 +71,14 @@ Route::prefix('mojopanggung')->group(function () {
     Route::get('/view', [mojopanggung::class, 'index'])->name('mojopanggung.view');
     Route::get('/add', [mojopanggung::class, 'create'])->name('mojopanggung.add');
     Route::post('/store', [mojopanggung::class, 'store'])->name('mojopanggung.store');
-    // Route::get('/edit/{id}',[UserController::class, 'UserEdit'])->name('users.edit');
-    // Route::post('/update/{id}',[UserController::class, 'UserUpdate'])->name('users.update');
-    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
+    Route::get('/edit/{id}',[mojopanggung::class, 'edit'])->name('mojopanggung.edit');
+    Route::post('/update/{id}',[mojopanggung::class, 'update'])->name('mojopanggung.update');
+    Route::get('/delete/{id}',[mojopanggung::class, 'delete'])->name('mojopanggung.delete');
 });
 Route::prefix('boyolangu')->group(function () {
     Route::get('/view', [boyolanguController::class, 'index'])->name('boyolangu.view');
     Route::get('/add', [boyolanguController::class, 'create'])->name('boyolangu.add');
-    Route::post('/store', [boyolanguController::class, 'store'])->name('boyolangu.store');
+    Route::put('/store', [boyolanguController::class, 'store'])->name('boyolangu.store');
     Route::get('/edit/{id}', [boyolanguController::class, 'edit'])->name('boyolangu.edit');
     Route::post('/update/{id}', [boyolanguController::class, 'update'])->name('boyolangu.update');
     // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
