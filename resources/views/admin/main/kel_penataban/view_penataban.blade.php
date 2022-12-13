@@ -20,8 +20,8 @@
                         <th>Alamat</th>
                         <th>No Ktp</th>
                         <th>No Hp</th>
-                        <th>Tanggal lahir</th>
-                        <th>Status</th>
+                        <th>Tanggal Ditambah</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
