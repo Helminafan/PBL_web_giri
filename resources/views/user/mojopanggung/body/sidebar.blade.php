@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -28,7 +28,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
 
-    <li class="nav-item active">
+    {{-- <li class="nav-item active">
         <a class="nav-link" href="{{route('kelgiri.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>GIRI</span></a>
@@ -60,7 +60,7 @@
         <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Jambersari</span></a>
-    </li>
+    </li> --}}
     <li class="nav-item active">
         <a class="nav-link" href="{{route('mojopanggung.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>

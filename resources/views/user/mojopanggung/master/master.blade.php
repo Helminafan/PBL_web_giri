@@ -38,18 +38,18 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('admin.body.sidebar')
+        @include('user.mojopanggung.body.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            @include('admin.body.header')
+            @include('user.mojopanggung.body.header')
             <!-- Main Content -->
-            @yield('content')
+            @yield('user')
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include('admin.body.footer')
+            @include('user.mojopanggung.body.footer')
             <!-- End of Footer -->
 
         </div>

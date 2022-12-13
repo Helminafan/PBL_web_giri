@@ -36,10 +36,10 @@ class KelGiri extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         foreach ($request->nama_warga as $key => $nama_warga) {
-            $data = new warga();
+            $data = warga::find($id);
             $data->nama_warga = $nama_warga;
             $data->alamat = $request->alamat[$key];
             $data->no_hp = $request->no_hp[$key];
@@ -76,7 +76,9 @@ class KelGiri extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd('Berhasil');
+        $editData = warga::find($id);
+        return view('admin.main.kel_giri.edit_kelgiri', compact('editData'));
     }
 
     /**
@@ -88,7 +90,24 @@ class KelGiri extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        foreach ($request->nama_warga as $key => $nama_warga) {
+            $data = warga::find($id);
+            $data->nama_warga = $nama_warga;
+            $data->alamat = $request->alamat[$key];
+            $data->no_hp = $request->no_hp[$key];
+            if ($data->foto_ktp = $request->file('foto_ktp')[$key]) {
+                $extension = $request->file('foto_ktp')[$key]->getClientOriginalExtension();
+                $newbaru = $request->nama_warga[$key] . '-' . now()->timestamp . '.' . $extension;
+                $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
+            }
+            $data['foto_ktp'] = $newbaru;
+            $data->kelurahan = "Giri";
+            $data->save();
+
+            $notifikasi = array();
+
+            return redirect()->route('kelgiri.view')->with('info', 'USER TELAH BERHASIL DIUBAH');
+        }
     }
 
     /**
@@ -99,8 +118,8 @@ class KelGiri extends Controller
      */
     public function destroy($id)
     {
-        // $deleteData = warga::find($id);
-        // $deleteData->delete();
-        // return redirect()->route('kelgiri.view')->with('info', 'USER TELAH BERHASIL DIHAPUS');
+        $deleteData = warga::find($id);
+        $deleteData->delete();
+        return redirect()->route('kelgiri.view')->with('info', 'DATA TELAH BERHASIL DIHAPUS');
     }
 }
