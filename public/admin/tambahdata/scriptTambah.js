@@ -4,6 +4,10 @@ $(".add-more").on("click", function () {
         '<div class="card-body">' +
         '<div class="form-group row">' +
         '<div class="col-sm-6 mb-3 mb-sm-0">' +
+        '<label for="nik">NIK</label>' +
+        '<input type="text" minlength="12"  maxlength="12" pattern="[0-9]{12}" required class="form-control  form-control-lg"  id="nik" placeholder="NIK" name="nik[]">' +
+        "</div>" +
+        '<div class="col-sm-6 mb-3 mb-sm-0">' +
         '<label for="Name">Nama Lengkap</label>' +
         '<input type="text" required class="form-control form-control-lg" id="nama" placeholder="Nama Lengkap" name="nama_warga[]"><br>' +
         "</div>" +
@@ -13,11 +17,11 @@ $(".add-more").on("click", function () {
         "</div>" +
         '<div class="col-sm-6">' +
         '<label for="telepon">No Telepon</label>' +
-        '<input type="number" required class="form-control form-control-lg" id="telepon" placeholder="Nomor Telepon" name="no_hp[]">' +
+        '<input type="number" pattern="(\62|62|0)8[1-9][0-9]{6,9}$" required class="form-control form-control-lg" id="telepon" placeholder="Nomor Telepon" name="no_hp[]">' +
         "</div>" +
         '<div class="col-sm-6">' +
         '<label for="fotoktp">Foto KTP</label>' +
-        '<input type="file" class="form-control-file" id="fotoktp" name="foto_ktp[]">' +
+        '<input required type="file" class="form-control-file"  id="fotoktp" name="foto_ktp[]">' +
         "</div>" +
         "</div>" +
         "</div>" +
@@ -32,3 +36,4 @@ $(".add-more-data").delegate(".delete", "click", function () {
     $(this).parent().parent().remove();
     total();
 });
+

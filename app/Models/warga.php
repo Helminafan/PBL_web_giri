@@ -17,5 +17,6 @@ class warga extends Model
         'no_hp',
         'kelurahan',
         'foto_ktp',
+        'nik'
     ];
 }
