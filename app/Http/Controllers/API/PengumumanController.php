@@ -79,7 +79,12 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = ModelsPengumuman::find($id);
+        $data->judul_edaran = $request->input('judul_edaran');
+        $data->surat_edaran = $request->input('surat_edaran');
+
+        $data->save();
+        return response()->json($data, 201);
     }
 
     /**
@@ -90,6 +95,7 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteData = ModelsPengumuman::find($id);
+        $deleteData->delete();
     }
 }
