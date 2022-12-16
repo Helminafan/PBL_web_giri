@@ -23,8 +23,8 @@ class UserSeeder extends Seeder
         $admin_role = Role::create(['name' => 'admin']);
         $admin = User::create([
             'name' => 'admin',
-            'email' => 'nafan2332@gmail.com',
-            'password' => bcrypt('helmi123'),
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin123'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
