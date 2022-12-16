@@ -44,7 +44,7 @@
                                             <td>{{ $row->created_at }}</td>
                                             <td>
                                                 <a href="{{route('penataban.edit', $row->id)}}" class="btn btn-warning"> Edit </a>
-                                                {{-- <a href="{{route('kelgiri.delete', $row->id)}}" id="delete"><button type="button" --}}
+                                                <a href="{{route('penataban.delete', $row->id)}}" id="delete"><button type="button"
                                                         class="btn btn-danger delete">Hapus</button></a>
                                             </td>
                                         </tr>
