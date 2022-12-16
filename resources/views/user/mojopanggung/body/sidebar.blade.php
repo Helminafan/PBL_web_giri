@@ -62,7 +62,7 @@
             <span>Kel.Jambersari</span></a>
     </li> --}}
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('mojopanggung.view')}}">
+        <a class="nav-link" href="{{route('user_mojopanggung.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Mojopanggung</span></a>
     </li>
