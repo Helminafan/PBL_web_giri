@@ -6,6 +6,7 @@ use App\Http\Controllers\API\ApiMojopanggungController;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\kewargaancontroller;
 use App\Http\Controllers\API\PengumumanController;
+use App\Http\Controllers\API\SuratController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -31,11 +32,15 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('/update_pengumuman/{id}', [PengumumanController::class, 'update']);
     Route::delete('/delete_pengumuman/{id}', [PengumumanController::class, 'destroy']);
 });
-Route::post('register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-Route::post('/add_kecamatan', [api_kecamatancontroller::class, 'store']);
-Route::get('/edit_kecamatan/{id}', [api_kecamatancontroller::class, 'edit']);
-Route::get('/view_kecamatan', [api_kecamatancontroller::class, 'index']);
-Route::put('/update_kecamatan/{id}', [api_kecamatancontroller::class, 'update']);
-Route::delete('/delete_kecamatan/{id}', [api_kecamatancontroller::class, 'destroy']);
+//Api
+Route::group(['prefix' => 'sur'], function () {
+    Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/surat', [SuratController::class, 'index']);
+    Route::post('surat/add', [SuratController::class, 'add']);
+    Route::post('surat/update',[SuratController::class, 'update']);
+    Route::post('surat/delete',[SuratController::class, 'delete']);
+    });
+});

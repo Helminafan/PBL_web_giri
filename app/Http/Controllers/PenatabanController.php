@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\warga;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PenatabanController extends Controller
 {
@@ -13,7 +15,8 @@ class PenatabanController extends Controller
      */
     public function index()
     {
-        return view("admin.main.tabel");
+        $data = warga::all();
+        return view('admin.main.kel_penataban.view_penataban', compact('data'));
     }
 
     /**
@@ -23,7 +26,8 @@ class PenatabanController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.main.kel_penataban.add_penataban');
     }
 
     /**
@@ -32,9 +36,25 @@ class PenatabanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        foreach ($request->nama_warga as $key => $nama_warga) {
+            $data = warga::find($id);
+            $data->nama_warga = $nama_warga;
+            $data->alamat = $request->alamat[$key];
+            $data->no_hp = $request->no_hp[$key];
+            if ($data->foto_ktp = $request->file('foto_ktp')[$key]) {
+                $extension = $request->file('foto_ktp')[$key]->getClientOriginalExtension();
+                $newbaru = $request->nama_warga[$key] . '-' . now()->timestamp . '.' . $extension;
+                $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
+            }
+            $data['foto_ktp'] = $newbaru;
+            $data->kelurahan = "Penataban";
+            $data->save();
+        }
+
+
+        return redirect()->route('penataban.view')->with('success', 'Data Berhasil Ditambah');;
     }
 
     /**
@@ -56,7 +76,9 @@ class PenatabanController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd('Berhasil');
+        $editData = warga::find($id);
+        return view('admin.main.kel_penataban.edit_penataban', compact('editData'));
     }
 
     /**
@@ -68,7 +90,24 @@ class PenatabanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        foreach ($request->nama_warga as $key => $nama_warga) {
+            $data = warga::find($id);
+            $data->nama_warga = $nama_warga;
+            $data->alamat = $request->alamat[$key];
+            $data->no_hp = $request->no_hp[$key];
+            if ($data->foto_ktp = $request->file('foto_ktp')[$key]) {
+                $extension = $request->file('foto_ktp')[$key]->getClientOriginalExtension();
+                $newbaru = $request->nama_warga[$key] . '-' . now()->timestamp . '.' . $extension;
+                $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
+            }
+            $data['foto_ktp'] = $newbaru;
+            $data->kelurahan = "Penataban";
+            $data->save();
+
+            $notifikasi = array();
+
+            return redirect()->route('penataban.view')->with('info', 'USER TELAH BERHASIL DIUBAH');
+        }
     }
 
     /**
@@ -79,6 +118,8 @@ class PenatabanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteData = warga::find($id);
+        $deleteData->delete();
+        return redirect()->route('penataban.view')->with('info', 'DATA TELAH BERHASIL DIHAPUS');
     }
 }
