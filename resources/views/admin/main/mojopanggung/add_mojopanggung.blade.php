@@ -66,16 +66,7 @@
                     required: true,
                     number: true,
                     minlength: 16,
-                    // remote: {
-                    //     url: baseUrl + "{{ route('check_nik') }}",
-                    //     type: "post",
-                    //     data: {
-                    //         nik: function() {
-                    //             return $("#nik").val();
-                    //         },
-                           
-                    //     }
-                    // }
+                  
                 },
                 'nama_warga[]': {
                     required: true,

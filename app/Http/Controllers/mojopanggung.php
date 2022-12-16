@@ -42,30 +42,12 @@ class mojopanggung extends Controller
      */
     public function store(Request $request)
     {
-      
+
 
         foreach ($request->nama_warga as $key => $nama_warga) {
-            
-        //     $request->validate(
-        //         [
-        //         'nik.*'         => 'required|numeric|min_digits:12|distinct',
-        //         'nik.0'         => 'required|numeric|min_digits:12',
-        //         'nama_warga.*'  => 'required',
-        //         'alamat.*'      => 'required',
-        //         'no_hp.*'       => 'required|numeric|min_digits:12',
-        //         'foto_ktp.*'    => 'required',
-        //         ],
-        //         [
-        //             'nik.*.required'            => "NIK tidak boleh kosong",
-        //             'nik.*.min_digits'          => "NIK harus berjumlah 12 digit",
-        //             'nama_warga.*.required'     => "Nama Warga Harus diisi",
-        //             'alamat.*.required'         => "Alamat harus diisi",
-        //             'no_hp.*.required'          => "Nomor HP harus diisi",
-        //             'no_hp.*.min_digits'        => "Nomor harus berjumlah 12 digit",
-        //             'foto_ktp.*.required'       => "Gambar Foto KTP harus dtambahkan",
-        //         ]
-        // );
-            
+
+
+
             $data = new warga();
             $data->nama_warga = $nama_warga;
             $data->nik = $request->nik[$key];
@@ -91,17 +73,17 @@ class mojopanggung extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function checkNik(Request $request)
-    {
-        $nik = DB::table('warga')->where('nik', $request->nik[])->first();
-        dd($nik);
-        if ($nik) {
-            echo 'false';
-        }
-        else {
-            echo 'true';
-        }
-    }
+    // public function checkNik(Request $request)
+    // {
+    //     $nik = DB::table('warga')->where('nik', $request->nik[])->first();
+    //     dd($nik);
+    //     if ($nik) {
+    //         echo 'false';
+    //     }
+    //     else {
+    //         echo 'true';
+    //     }
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -129,8 +111,8 @@ class mojopanggung extends Controller
             if (File::exists('fotoPetugas/' . $dataWarga->foto_ktp)) {
                 File::delete('fotoPetugas/' . $dataWarga->foto_ktp);
             }
-            $request->file('foto')->move('fotoPetugas/', $request->file('foto')->getClientOriginalName());
-            $dataWarga->foto_ktp = $request->file('foto')->getClientOriginalName();
+            $request->file('foto_ktp')->move('fotoPetugas/', $request->file('foto_ktp')->getClientOriginalName());
+            $dataWarga->foto_ktp = $request->file('foto_ktp')->getClientOriginalName();
         }
         $dataWarga->nama_warga   = $request->nama_warga;
         $dataWarga->nik   = $request->nik;
