@@ -11,7 +11,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Data Warga Kec Mojopanggung</h6>
                             </div>
                             <div class="co">
-                                <a href="{{ route('mojopanggung.add') }}"><button class="btn btn-primary"> Tambah Data
+                                <a href="{{ route('user_mojopanggung.add') }}"><button class="btn btn-primary"> Tambah Data
                                     </button></a>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                                         <th>Kelurahan</th>
                                         <th>No Hp</th>
                                         <th>Tanggal Ditambah</th>
-                                        <th>Aksi</th>
+                                    
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -41,11 +41,7 @@
                                             <td>{{ $row->kelurahan }}</td>
                                             <td>{{ $row->no_hp }}</td>
                                             <td>{{ $row->created_at }}</td>
-                                            <td>
-                                                <a href="#" class="btn btn-warning"> Edit </a>
-                                                <a href="#" id="delete"><button type="button"
-                                                        class="btn btn-danger delete">Hapus</button></a>
-                                            </td>
+                                           
                                         </tr>
                                     @endforeach
                                 </tbody>
