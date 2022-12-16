@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('keterangan');
             $table->string('status_surat');
             $table->timestamps();
+        });
     }
+
 
     /**
      * Reverse the migrations.
