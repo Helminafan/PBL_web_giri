@@ -65,7 +65,7 @@ Route::prefix('Penataban')->group(function () {
     Route::post('/store',[PenatabanController::class, 'store'])->name('penataban.store');
     Route::get('/edit/{id}',[penatabanController::class, 'edit'])->name('penataban.edit');
     Route::post('/update/{id}',[PenatabanController::class, 'update'])->name('penataban.update');
-    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
+    Route::get('/delete/{id}',[PenatabanController::class, 'destroy'])->name('penataban.delete');
 });
 
 

@@ -15,6 +15,12 @@
                     <div class="card-body">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label for="nik">No KK</label>
+                                <input type="text" required class="form-control nik form-control-lg" id="nik"
+                                    placeholder="No KK" minlength="16" maxlength="16" name="nik[]">
+                                <br>
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="Name">Nama Lengkap</label>
                                 <input type="text" required class="form-control form-control-lg" id="nama"
                                     placeholder="Nama Lengkap" name="nama_warga[]">
