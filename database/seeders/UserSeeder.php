@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('mojopanggung123'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-        ]);
+        ]); 
         $mojopanggung->assignRole($mojopanggung_role);
     }
 }
