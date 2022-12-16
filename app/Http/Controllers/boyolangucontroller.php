@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\warga;
+use DB;
+use File;
 use Illuminate\Http\Request;
 
 class boyolangucontroller extends Controller
@@ -14,7 +16,9 @@ class boyolangucontroller extends Controller
      */
     public function index()
     {
-        $data = warga::all();
+        $data = DB::table('warga')
+            ->where('kelurahan', '=', 'Boyolangu')
+            ->get();
         return view('admin.main.boyolangu.view_boyolangu', compact('data'));
     }
 
@@ -39,6 +43,7 @@ class boyolangucontroller extends Controller
         foreach ($request->nama_warga as $key => $nama_warga) {
             $data = new warga();
             $data->nama_warga = $nama_warga;
+            $data->nik = $request->nik[$key];
             $data->alamat = $request->alamat[$key];
             $data->no_hp = $request->no_hp[$key];
             if ($data->foto_ktp = $request->file('foto_ktp')[$key]) {
@@ -47,12 +52,12 @@ class boyolangucontroller extends Controller
                 $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
             }
             $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "boyolangu";
+            $data->kelurahan = "Boyolangu";
             $data->save();
         }
 
 
-        return redirect()->route('boyolangu.view')->with('success', 'Data Berhasil Ditambah');;
+        return redirect()->route('boyolangu.view')->with('success', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -87,7 +92,19 @@ class boyolangucontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = warga::find($id);
+        if ($request->hasFile('foto_ktp')) {
+            if (File::exists('fotoPetugas/' . $data->foto_ktp)) {
+                File::delete('fotoPetugas/' . $data->foto_ktp);
+            }
+            $request->file('foto_ktp')->move('fotoPetugas/', $request->file('foto_ktp')->getClientOriginalName());
+            $data->foto_ktp = $request->file('foto_ktp')->getClientOriginalName();
+        }
+        $data->nama_warga   = $request->nama_warga;
+        $data->nik   = $request->nik;
+        $data->no_hp   = $request->no_hp;
+        $data->update();
+        return redirect()->route('boyolangu.view')->with('Success', 'Update Warga berhasil');
     }
 
     /**
@@ -98,6 +115,8 @@ class boyolangucontroller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = warga::find($id);
+        $data->delete();
+        return redirect()->route('boyolangu.view');
     }
 }

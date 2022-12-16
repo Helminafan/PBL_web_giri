@@ -44,7 +44,7 @@
                                     <td>{{ $row->created_at }}</td>
                                     <td>
                                         <a href="{{route('boyolangu.edit',$row->id)}}" class="btn btn-warning"> Edit </a>
-                                        <a href="#" id="delete"><button type="button" class="btn btn-danger delete">Hapus</button></a>
+                                        <a href="{{route('users.delete',$row->id)}}" id="delete"><button type="button" class="btn btn-danger delete">Hapus</button></a>
                                     </td>
                                 </tr>
                                 @endforeach

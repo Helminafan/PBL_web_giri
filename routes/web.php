@@ -39,10 +39,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/home', function () {
         return view('user.mojopanggung.main.index');
     })->name('mojopanggung.dashboard');
-    Route::get('/view',[UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
-    Route::get('/add',[UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
-    Route::post('/store',[UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
-    
+    Route::get('/view', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
+    Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
+    Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:kelgiri'])->group(function () {
@@ -94,7 +93,7 @@ Route::prefix('boyolangu')->group(function () {
     Route::post('/store', [boyolanguController::class, 'store'])->name('boyolangu.store');
     Route::get('/edit/{id}', [boyolanguController::class, 'edit'])->name('boyolangu.edit');
     Route::post('/update/{id}', [boyolanguController::class, 'update'])->name('boyolangu.update');
-    // Route::get('/delete/{id}',[UserController::class, 'UserDelete'])->name('users.delete');
+    Route::get('/delete/{id}', [boyolanguController::class, 'destroy'])->name('users.delete');
 });
 
 Route::get('/auth/logout', [AdminController::class, 'logout'])->name('admin.logout')->middleware('auth');
