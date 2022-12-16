@@ -91,17 +91,17 @@ class mojopanggung extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function checkNik(Request $request)
-    {
-        $nik = DB::table('warga')->where('nik', $request->nik[])->first();
-        dd($nik);
-        if ($nik) {
-            echo 'false';
-        }
-        else {
-            echo 'true';
-        }
-    }
+    // public function checkNik(Request $request)
+    // {
+    //     $nik = DB::table('warga')->where('nik', $request->nik[])->first();
+    //     dd($nik);
+    //     if ($nik) {
+    //         echo 'false';
+    //     }
+    //     else {
+    //         echo 'true';
+    //     }
+    // }
 
     /**
      * Show the form for editing the specified resource.
