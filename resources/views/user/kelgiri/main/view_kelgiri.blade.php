@@ -1,5 +1,5 @@
-@extends('admin.master.master')
-@section('content')
+@extends('user.kelgiri.master.master')
+@section('user')
     <div class="container-fluid">
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Table Kecamatan Mojopanggung</h1>
@@ -42,8 +42,8 @@
                                             <td>{{ $row->no_hp }}</td>
                                             <td>{{ $row->created_at }}</td>
                                             <td>
-                                                <a href="{{route('mojopanggung.edit',$row->id)}}" class="btn btn-warning"> Edit </a>
-                                                <a href="{{route('mojopanggung.delete',$row->id)}}" id="delete"><button type="button"
+                                                <a href="#" class="btn btn-warning"> Edit </a>
+                                                <a href="#" id="delete"><button type="button"
                                                         class="btn btn-danger delete">Hapus</button></a>
                                             </td>
                                         </tr>

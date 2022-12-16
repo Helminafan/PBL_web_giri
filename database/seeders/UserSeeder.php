@@ -39,5 +39,15 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]); 
         $mojopanggung->assignRole($mojopanggung_role);
+
+        $kelgiri_role = Role::create(['name' => 'kelgiri']);
+        $kelgiri = User::create([
+            'name' => 'kelgiri',
+            'email' => 'kelgiri@gmail.com',
+            'password' => bcrypt('kelgiri123'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        $kelgiri->assignRole($kelgiri_role);
     }
 }
