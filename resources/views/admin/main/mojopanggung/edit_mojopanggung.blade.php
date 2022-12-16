@@ -7,7 +7,7 @@
                 <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
             </div>
         </div>
-        <form id="validate" class="user" method="POST" autocomplete="off" action="{{ route('user_mojopanggung.update',$dataWarga->id) }}"
+        <form id="validate" class="user" method="POST" autocomplete="off" action="{{ route('mojopanggung.update',$dataWarga->id) }}"
             enctype="multipart/form-data">
             @csrf
             <div class="add-more-data">
