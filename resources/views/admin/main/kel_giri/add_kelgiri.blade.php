@@ -15,6 +15,12 @@
                     <div class="card-body">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label for="nik">NIK</label>
+                                <input type="text" required class="form-control nik form-control-lg" id="nik"
+                                    placeholder="NIK" minlength="16"  maxlength="16" pattern="[0-9]{12}" name="nik[]"  >
+                                <br>
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="Name">Nama Lengkap</label>
                                 <input type="text" required class="form-control form-control-lg" id="nama"
                                     placeholder="Nama Lengkap" name="nama_warga[]">
@@ -28,11 +34,11 @@
                             <div class="col-sm-6">
                                 <label for="telepon">No Telepon</label>
                                 <input type="number" required class="form-control form-control-lg" id="telepon"
-                                    placeholder="Nomor Telepon" name="no_hp[]">
+                                    placeholder="Nomor Telepon" pattern="(\+62|62|0)8[1-9][0-9]{6,9}$" name="no_hp[]">
                             </div>
                             <div class="col-sm-6">
                                 <label for="fotoktp">Foto KTP</label>
-                                <input type="file" class="form-control-file" name="foto_ktp[]" id="fotoktp">
+                                <input type="file" class="form-control-file" required name="foto_ktp[]" id="fotoktp">
                             </div>
                         </div>
                     </div>
@@ -51,4 +57,30 @@
 
 @push('js')
     <script src="{{ asset('admin/tambahdata/scriptTambah.js') }}"></script>
+    <script type="text/javascript">
+    $('#validate').validate({
+            rules: {
+                'nik[]': {
+                    required: true,
+                },
+                'nama_warga[]': {
+                    required:true,
+                },
+                'alamat[]': {
+                    required:true,
+                },
+                'no_hp[]': {
+                    required:true,
+                },
+                'foto_ktp[]': {
+                    required:true,
+                },
+            },
+            // messages: {
+            //     'empname[]' : "Please input file*",
+            //     'phone[]' : "Please input file*",
+            //     'department[]' : "Please input file*",
+            // },
+        });
+    </script>
 @endpush

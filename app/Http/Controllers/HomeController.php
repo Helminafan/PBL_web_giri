@@ -14,8 +14,10 @@ class HomeController extends Controller
             return redirect()->route('mojopanggung.dashboard');
         }
         if (auth()->user()->hasRole('admin')) {
-           return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.dashboard');
         }
-       
+        if (auth()->user()->hasRole('kelgiri')) {
+            return redirect()->route('kelgiri.dashboard');
+        }
     }
 }
