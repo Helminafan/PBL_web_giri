@@ -5,15 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class surat extends Model
+class Surat extends Model
 {
     use HasFactory;
-    protected $table = 'surat';
-    protected $primaryKey = 'id';
-    public $timestamps = true;
     protected $fillable = [
-        'tanggal_surat',
-        'keterangan',
-        'status_surat'
-    ];
+        'id','tanggal_surat', 'keterangan', 'status_surat'    ];
 }

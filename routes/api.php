@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -34,12 +34,15 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::delete('/delete_pengumuman/{id}', [PengumumanController::class, 'destroy']);
 
 });
-Route::post('register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-Route::post('/add_surat', [SuratController::class, 'store']);
-Route::get('/edit_surat/{id}', [SuratController::class, 'edit']);
-Route::put('/update_surat/{id}', [SuratController::class, 'update']);
-Route::get('/view_surat', [SuratController::class, 'index']);
-Route::delete('/delete_surat/{id}', [SuratController::class, 'destroy']);
-
+//Api
+Route::group(['prefix' => 'sur'], function () {
+    Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/surat', [SuratController::class, 'index']);
+    Route::post('surat/add', [SuratController::class, 'add']);
+    Route::post('surat/update',[SuratController::class, 'update']);
+    Route::post('surat/delete',[SuratController::class, 'delete']);
+    });
+});

@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('surat', function (Blueprint $table) {
-            $table->id();
+        Schema::create('surats', function (Blueprint $table) {
+            $table->bigInteger('id');
             $table->date('tanggal_surat');
             $table->string('keterangan');
             $table->string('status_surat');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surat');
+        Schema::dropIfExists('surats');
     }
 };

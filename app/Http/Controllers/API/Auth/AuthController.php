@@ -14,16 +14,14 @@ class AuthController extends Controller
         $validateData = $request->validate([
             'name' => 'required|max:25',
             'email' => 'email | required | unique:users',
-            'password' => 'required | confirmed',
-            'role ' => 'nullable'
+            'password' => 'required | confirmed'
         ]);
 
         // create user
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
-            'role' => "admin",
-            'password' => bcrypt($request->password),
+            'password' => bcrypt($request->password)
         ]);
 
         $user->save();
@@ -48,10 +46,13 @@ class AuthController extends Controller
 
         $user = $request->user();
 
-
+        $tokenResult = $user->createToken('AccessToken');
+        $token = $tokenResult->token;
+        $token->save();
 
         return response()->json([
-            'token'         => $user->createToken("API TOKEN")->plainTextToken,
+            'access_token' => $tokenResult->accessToken,
+            'token_id' => $token->id,
             'user_id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,

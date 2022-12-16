@@ -3,101 +3,78 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\surat;
+use App\Models\Surat;
 use Illuminate\Http\Request;
 
 class SuratController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $data = surat::all();
-        return response()->json([
-            'data' => $data,
-        ], 200);
+        $surat = Surat::all();
+        return response()->json($surat, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function add(Request $request)
     {
+        $validateData = $request->validate([
+            'id' => 'required',
+            'tanggal_surat' => 'required',
+            'keterangan' => 'required',
+            'status_surat' => 'required',
+        
+        ]);
+
+        // create user
+        $surat = new Surat([
+            'id' =>  $request->id,
+            'tanggal_surat' =>  $request->tanggal_surat,
+            'keterangan' =>  $request->keterangan,
+            'status_surat' =>  $request->status_surat,
+           
+        ]);
+
+        $surat->save();
+
+        return response()->json($surat, 201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        $data = new surat();
-        $data->tanggal_surat = $request->tanggal_surat;
-        $data->keterangan= $request->keterangan;
-        $data->status_surat = $request->status_surat;
-        $data->save();
-        return response()->json($data, 201);
+        $validateData = $request->validate([
+            'id' => 'required',
+            'tanggal_surat' => 'required',
+            'keterangan' => 'required',
+            'status_surat' => 'required',
+           
+        ]);
+
+        // update user
+        $surat = Surat::where('id', '=', $request->id)->first();
+        ([
+             $surat->id= $request->id,
+             $surat->tanggal_surat= $request->tanggal_surat,
+             $surat->keterangan = $request->keterangan,
+             $surat->status_surat = $request->status_surat,
+             
+        ]);
+
+        $surat->save();
+
+        return response()->json($surat, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function delete(Request $request)
     {
-        //
-    }
+        $surat = Surat::where('id', '=', $request->id)->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $data = surat::find($id);
-        return response()->json($data);
-    }
+        if (!empty($surat)) {
+            $surat->delete();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $data = surat::find($id);
-        $data->tanggal_surat = $request->tanggal_surat;
-        $data->keterangan= $request->keterangan;
-        $data->status_surat = $request->status_surat;
-        $data->update();
-        return response()->json($data, 201);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $dataSurat = surat::find($id);
-        $dataSurat->delete();
-        return response()->json(
-            ['messege' => 'Surat Berhasil Dihapus'], 
-            204);
+            return response()->json($surat, 200);
+        } else {
+            return response()->json([
+                'error' => 'data tidak ditemukan'
+            ], 404);
+        }
     }
 }
