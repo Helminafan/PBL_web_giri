@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\api_kecamatancontroller;
 use App\Http\Controllers\API\ApiGiriController;
 use App\Http\Controllers\API\ApiMojopanggungController;
 use App\Http\Controllers\API\Auth\AuthController;
@@ -31,5 +32,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-Route::post('/add_kewargaan', [kewargaancontroller::class, 'store']);
-Route::get('/view_kewargaan', [kewargaancontroller::class, 'index']);
+Route::post('/add_kecamatan', [api_kecamatancontroller::class, 'store']);
+Route::get('/edit_kecamatan/{id}', [api_kecamatancontroller::class, 'edit']);
+Route::get('/view_kecamatan', [api_kecamatancontroller::class, 'index']);
+Route::put('/update_kecamatan/{id}', [api_kecamatancontroller::class, 'update']);
+Route::delete('/delete_kecamatan/{id}', [api_kecamatancontroller::class, 'destroy']);
