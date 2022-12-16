@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\pengumuman as ModelsPengumuman;
+use App\Models\kecamatan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class PengumumanController extends Controller
+class api_kecamatancontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $data = ModelsPengumuman::all();
+        $data = kecamatan::all();
         return response()->json([
             'data' => $data,
         ], 200);
@@ -29,7 +28,6 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -40,10 +38,11 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new ModelsPengumuman();
-        $data->judul_edaran = $request->judul_edaran;
-        $data->surat_edaran = $request->surat_edaran;
-
+        $data = new kecamatan();
+        $data->id_kecamatan = $request->id_kecamatan;
+        $data->kecamatan = $request->kecamatan;
+        $data->alamat = $request->alamat;
+        $data->email = $request->email;
         $data->save();
         return response()->json($data, 201);
     }
@@ -67,7 +66,8 @@ class PengumumanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = kecamatan::find($id);
+        return response()->json($data);
     }
 
     /**
@@ -79,11 +79,12 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = ModelsPengumuman::find($id);
-        $data->judul_edaran = $request->input('judul_edaran');
-        $data->surat_edaran = $request->input('surat_edaran');
-
-        $data->save();
+        $data = kecamatan::find($id);
+        $data->id_kecamatan = $request->id_kecamatan;
+        $data->kecamatan = $request->kecamatan;
+        $data->alamat = $request->alamat;
+        $data->email = $request->email;
+        $data->update();
         return response()->json($data, 201);
     }
 
@@ -95,7 +96,11 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        $deleteData = ModelsPengumuman::find($id);
-        $deleteData->delete();
+        $dataWarga = kecamatan::find($id);
+        $dataWarga->delete();
+        return response()->json(
+            ['messege' => 'data kecamatan Berhasil Dihapus'],
+            204
+        );
     }
 }

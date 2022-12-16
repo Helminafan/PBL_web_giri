@@ -40,13 +40,13 @@
         <a class="nav-link" href="{{route('penataban.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Penataban</span></a>
-    </li>
+    </li> --}}
     <li class="nav-item active">
         <a class="nav-link" href="{{route('kelgiri.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Giri</span></a>
     </li>
-    <li class="nav-item active">
+    {{--<li class="nav-item active">
         <a class="nav-link" href="{{route('boyolangu.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Desa.Boyolangu</span></a>
@@ -60,12 +60,12 @@
         <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Jambersari</span></a>
-    </li> --}}
+    </li>
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('user_mojopanggung.view')}}">
+        <a class="nav-link" href="{{route('mojopanggung.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Mojopanggung</span></a>
-    </li>
+    </li> --}}
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">

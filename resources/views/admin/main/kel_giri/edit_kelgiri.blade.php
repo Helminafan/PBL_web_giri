@@ -42,13 +42,13 @@
                 <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
                 </span>
-                <span class="text">Tambah Data</span>
+                <span class="text">Edit Data</span>
             </button>
         </form>
 
     </div>
 @endsection
 
-@push('js')
+{{-- @push('js')
     <script src="{{ asset('admin/tambahdata/scriptTambah.js') }}"></script>
-@endpush
+@endpush --}}

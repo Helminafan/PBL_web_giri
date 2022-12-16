@@ -82,7 +82,7 @@ class mojopanggung extends Controller
         }
 
 
-        return redirect()->route('mojopanggung.view')->with('success', 'Data Berhasil Ditambah');;
+        return redirect()->route('mojopanggung.view')->with('success', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -91,9 +91,16 @@ class mojopanggung extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function checkNik(Request $request)
     {
-        //
+        $nik = DB::table('warga')->where('nik', $request->nik[])->first();
+        dd($nik);
+        if ($nik) {
+            echo 'false';
+        }
+        else {
+            echo 'true';
+        }
     }
 
     /**
@@ -105,7 +112,7 @@ class mojopanggung extends Controller
     public function edit($id)
     {
         $dataWarga = warga::find($id);
-        return view('backend.user.edit_nasabah', compact('dataWarga'));
+        return view('admin.main.mojopanggung.edit_mojopanggung', compact('dataWarga'));
     }
 
     /**
@@ -142,6 +149,6 @@ class mojopanggung extends Controller
     {
         $dataWarga = warga::find($id);
         $dataWarga->delete();
-        return redirect()->route('mojopanggung.view')->with('success', 'Hapus warga berhasil');
+        return redirect()->route('mojopanggung.view');
     }
 }

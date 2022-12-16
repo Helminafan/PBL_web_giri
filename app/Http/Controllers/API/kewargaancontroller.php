@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\pengumuman as ModelsPengumuman;
+use App\Models\kewargaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PengumumanController extends Controller
+class kewargaancontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $data = ModelsPengumuman::all();
+        $data = DB::table('kewargaan')
+            ->get();
         return response()->json([
             'data' => $data,
         ], 200);
@@ -40,9 +41,11 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new ModelsPengumuman();
-        $data->judul_edaran = $request->judul_edaran;
-        $data->surat_edaran = $request->surat_edaran;
+        $data = new kewargaan();
+        $data->id_lurah = $request->id_lurah;
+        $data->kelurahan = $request->kelurahan;
+        $data->username = $request->username;
+        $data->password = $request->password;
 
         $data->save();
         return response()->json($data, 201);
@@ -79,12 +82,7 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = ModelsPengumuman::find($id);
-        $data->judul_edaran = $request->input('judul_edaran');
-        $data->surat_edaran = $request->input('surat_edaran');
-
-        $data->save();
-        return response()->json($data, 201);
+        //
     }
 
     /**
@@ -95,7 +93,6 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        $deleteData = ModelsPengumuman::find($id);
-        $deleteData->delete();
+        //
     }
 }

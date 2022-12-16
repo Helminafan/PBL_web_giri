@@ -7,6 +7,7 @@ use App\Http\Controllers\mojopanggung;
 use App\Http\Controllers\PenatabanController;
 use App\Http\Controllers\boyolanguController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\UserMojopanggungController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,17 +26,29 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/dashboard',[HomeController::class, 'redirectUser'])->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'redirectUser'])->name('dashboard');
 });
 
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','role:admin'])->group(function () {
-    Route::get('/dashboard/admin', function () { return view('admin.main.index');})->name('admin.dashboard');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
+    Route::get('/dashboard/admin', function () {
+        return view('admin.main.index');
+    })->name('admin.dashboard');
 });
 
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','role:mojopanggung'])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung'])->group(function () {
     Route::get('/home', function () {
         return view('user.mojopanggung.main.index');
     })->name('mojopanggung.dashboard');
+    Route::get('/view',[UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
+    Route::get('/add',[UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
+    Route::post('/store',[UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
+    
+});
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:kelgiri'])->group(function () {
+    Route::get('/home', function () {
+        return view('user.kelgiri.main.index');
+    })->name('kelgiri.dashboard');
 });
 
 Route::prefix('Giri')->group(function () {
@@ -71,9 +84,9 @@ Route::prefix('mojopanggung')->group(function () {
     Route::get('/view', [mojopanggung::class, 'index'])->name('mojopanggung.view');
     Route::get('/add', [mojopanggung::class, 'create'])->name('mojopanggung.add');
     Route::post('/store', [mojopanggung::class, 'store'])->name('mojopanggung.store');
-    Route::get('/edit/{id}',[mojopanggung::class, 'edit'])->name('mojopanggung.edit');
-    Route::post('/update/{id}',[mojopanggung::class, 'update'])->name('mojopanggung.update');
-    Route::get('/delete/{id}',[mojopanggung::class, 'delete'])->name('mojopanggung.delete');
+    Route::get('/edit/{id}', [mojopanggung::class, 'edit'])->name('mojopanggung.edit');
+    Route::post('/update/{id}', [mojopanggung::class, 'update'])->name('mojopanggung.update');
+    Route::get('/delete/{id}', [mojopanggung::class, 'delete'])->name('mojopanggung.delete');
 });
 Route::prefix('boyolangu')->group(function () {
     Route::get('/view', [boyolanguController::class, 'index'])->name('boyolangu.view');

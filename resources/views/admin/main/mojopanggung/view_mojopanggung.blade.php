@@ -42,8 +42,8 @@
                                             <td>{{ $row->no_hp }}</td>
                                             <td>{{ $row->created_at }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-warning"> Edit </a>
-                                                <a href="#" id="delete"><button type="button"
+                                                <a href="{{route('mojopanggung.edit',$row->id)}}" class="btn btn-warning"> Edit </a>
+                                                <a href="{{route('mojopanggung.delete',$row->id)}}" id="delete"><button type="button"
                                                         class="btn btn-danger delete">Hapus</button></a>
                                             </td>
                                         </tr>
