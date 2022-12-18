@@ -129,8 +129,8 @@ class mojopanggung extends Controller
             if (File::exists('fotoPetugas/' . $dataWarga->foto_ktp)) {
                 File::delete('fotoPetugas/' . $dataWarga->foto_ktp);
             }
-            $request->file('foto')->move('fotoPetugas/', $request->file('foto')->getClientOriginalName());
-            $dataWarga->foto_ktp = $request->file('foto')->getClientOriginalName();
+            $request->file('foto_ktp')->move('fotoPetugas/', $request->file('foto_ktp')->getClientOriginalName());
+            $dataWarga->foto_ktp = $request->file('foto_ktp')->getClientOriginalName();
         }
         $dataWarga->nama_warga   = $request->nama_warga;
         $dataWarga->nik   = $request->nik;

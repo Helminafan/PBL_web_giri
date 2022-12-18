@@ -1,13 +1,14 @@
 @extends('admin.master.master')
 @section('content')
     <div class="container-fluid">
-        <h1 class="h3 mb-2 text-gray-800">Tambah Data Warga Miskin Kecamatan Mojopanggung</h1>
+        <h1 class="h3 mb-2 text-gray-800">Tambah Data Warga Miskin Desa Grogol</h1>
         <div class="row d-flex justify-content-between">
             <div class="col">
                 <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
             </div>
+            <div class="co"><button class="btn btn-success add-more"> Tambah Data </button></div>
         </div>
-        <form id="validate" class="user" method="POST" autocomplete="off" action="{{ route('mojopanggung.update',$dataWarga->id) }}"
+        <form id="validate" class="user" method="POST" autocomplete="off" action="{{ route('grogol.store') }}"
             enctype="multipart/form-data">
             @csrf
             <div class="add-more-data">
@@ -17,29 +18,29 @@
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="nik">No KK</label>
                                 <input type="text" required class="form-control nik form-control-lg" id="nik"
-                                    placeholder="No KK" minlength="16" maxlength="16" name="nik" value="{{$dataWarga->nik}}">
+                                    placeholder="No KK" minlength="16" maxlength="16" name="nik[]">
                                 <br>
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="Name">Nama Lengkap</label>
                                 <input type="text" required class="form-control form-control-lg" id="nama"
-                                    placeholder="Nama Lengkap" name="nama_warga" value="{{$dataWarga->nama_warga}}">
+                                    placeholder="Nama Lengkap" name="nama_warga[]">
                                 <br>
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="Alamat">Alamat</label>
                                 <input type="text" required class="form-control form-control-lg"
-                                    id="alamat"placeholder="Alamat" name="alamat" value="{{$dataWarga->alamat}}">
+                                    id="alamat"placeholder="Alamat" name="alamat[]">
                                 <br>
                             </div>
                             <div class="col-sm-6">
                                 <label for="telepon">No Telepon</label>
                                 <input type="number" required class="form-control form-control-lg" id="telepon"
-                                    placeholder="Nomor Telepon" pattern="(\+62|62|0)8[1-9][0-9]{6,9}$" name="no_hp" value="{{$dataWarga->no_hp}}">
+                                    placeholder="Nomor Telepon" pattern="(\+62|62|0)8[1-9][0-9]{6,9}$" name="no_hp[]">
                             </div>
                             <div class="col-sm-6">
                                 <label for="fotoktp">Foto KTP</label>
-                                <input type="file" class="form-control-file"  name="foto_ktp" id="fotoktp" value="{{$dataWarga->foto_ktp}}">
+                                <input type="file" class="form-control-file" required name="foto_ktp[]" id="fotoktp">
                             </div>
                         </div>
                     </div>
@@ -49,14 +50,14 @@
                 <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
                 </span>
-                <span class="text">Edit Data</span>
+                <span class="text">Tambah Data</span>
             </button>
         </form>
 
     </div>
 @endsection
 
-{{-- @push('js')
+@push('js')
     <script src="{{ asset('admin/tambahdata/scriptTambah.js') }}"></script>
     <script type="text/javascript">
         $('#validate').validate({
@@ -95,7 +96,7 @@
                     required: "No KK tidak boleh kosong",
                     number: "data harus berupa angka",
                     minlength: "inputan harus berjumlah 16",
-                    remote:"nik sudah digunakan"
+                   
                 },
                 'nama_warga[]': {
                     required: "nama lengkap tidak boleh kosong",
@@ -113,4 +114,4 @@
             },
         });
     </script>
-@endpush --}}
+@endpush

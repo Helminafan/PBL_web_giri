@@ -1,13 +1,13 @@
 @extends('admin.master.master')
 @section('content')
     <div class="container-fluid">
-        <h1 class="h3 mb-2 text-gray-800">Tambah Data Warga Miskin Kecamatan Mojopanggung</h1>
+        <h1 class="h3 mb-2 text-gray-800">Tambah Data Warga Miskin Desa Grogol</h1>
         <div class="row d-flex justify-content-between">
             <div class="col">
                 <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
             </div>
         </div>
-        <form id="validate" class="user" method="POST" autocomplete="off" action="{{ route('mojopanggung.update',$dataWarga->id) }}"
+        <form id="validate" class="user" method="POST" autocomplete="off" action="{{ route('grogol.update',$dataWarga->id) }}"
             enctype="multipart/form-data">
             @csrf
             <div class="add-more-data">
