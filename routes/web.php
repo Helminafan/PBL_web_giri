@@ -7,7 +7,9 @@ use App\Http\Controllers\mojopanggung;
 use App\Http\Controllers\PenatabanController;
 use App\Http\Controllers\boyolanguController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\User\UserMojopanggungController;
+use App\Models\warga;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +33,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
     Route::get('/dashboard/admin', function () {
-        return view('admin.main.index');
+
+        $mojopanngung = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('kelurahan', '=', 'mojopanggung')->count();
+
+        $mojopanngung = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('kelurahan', '=', 'mojopanggung')->count();
+        
+        return view('admin.main.index', compact('mojopanggung'));
     })->name('admin.dashboard');
 });
 
@@ -103,5 +112,6 @@ Route::prefix('grogol')->group(function () {
     Route::post('/update/{id}', [mojopanggung::class, 'update'])->name('grogol.update');
     Route::get('/delete/{id}', [mojopanggung::class, 'destroy'])->name('grogol.delete');
 });
+Route::get('/test', [TestController::class, 'test']);
 
 Route::get('/auth/logout', [AdminController::class, 'logout'])->name('admin.logout')->middleware('auth');

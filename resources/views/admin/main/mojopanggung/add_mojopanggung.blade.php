@@ -37,11 +37,7 @@
                             <label for="fotoktp">Foto KTP</label>
                             <input type="file" class="form-control-file" required name="foto_ktp[]" id="fotoktp">
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <label for="Alamat">Kelurahan</label>
-                            <input type="text" required class="form-control form-control-lg" id="alamat" placeholder="Alamat" name="kelurahan[]">
-                            <br>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

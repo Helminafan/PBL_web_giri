@@ -45,9 +45,6 @@ class mojopanggung extends Controller
 
 
         foreach ($request->nama_warga as $key => $nama_warga) {
-
-
-
             $data = new warga();
             $data->nama_warga = $nama_warga;
             $data->nik = $request->nik[$key];
