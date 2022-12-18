@@ -131,8 +131,8 @@ button
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="myAreaChart"></canvas>
+                        <div class="chart-bar">
+                            <canvas id="myBarChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -188,7 +188,7 @@ button
             <div class="col-lg-6 mb-4">
 
                 <!-- Project Card Example -->
-                <div class="card shadow mb-4">
+                {{-- <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
                     </div>
@@ -224,10 +224,10 @@ button
                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Color System -->
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-lg-6 mb-4">
                         <div class="card bg-primary text-white shadow">
                             <div class="card-body">
@@ -292,11 +292,11 @@ button
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 
-            <div class="col-lg-6 mb-4">
+            {{-- <div class="col-lg-6 mb-4">
 
                 <!-- Illustrations -->
                 <div class="card shadow mb-4">
@@ -331,7 +331,7 @@ button
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
         </div>
 
     </div>

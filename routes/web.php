@@ -95,5 +95,13 @@ Route::prefix('boyolangu')->group(function () {
     Route::post('/update/{id}', [boyolanguController::class, 'update'])->name('boyolangu.update');
     Route::get('/delete/{id}', [boyolanguController::class, 'destroy'])->name('users.delete');
 });
+Route::prefix('grogol')->group(function () {
+    Route::get('/view', [mojopanggung::class, 'index'])->name('grogol.view');
+    Route::get('/add', [mojopanggung::class, 'create'])->name('grogol.add');
+    Route::post('/store', [mojopanggung::class, 'store'])->name('grogol.store');
+    Route::get('/edit/{id}', [mojopanggung::class, 'edit'])->name('grogol.edit');
+    Route::post('/update/{id}', [mojopanggung::class, 'update'])->name('grogol.update');
+    Route::get('/delete/{id}', [mojopanggung::class, 'destroy'])->name('grogol.delete');
+});
 
 Route::get('/auth/logout', [AdminController::class, 'logout'])->name('admin.logout')->middleware('auth');
