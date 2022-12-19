@@ -8,6 +8,7 @@ use App\Http\Controllers\PenatabanController;
 use App\Http\Controllers\boyolanguController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\User\UserKelgiriController;
 use App\Http\Controllers\User\UserMojopanggungController;
 use App\Models\warga;
 use Illuminate\Support\Facades\Route;
@@ -61,15 +62,16 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/home', function () {
         return view('user.mojopanggung.main.index');
     })->name('mojopanggung.dashboard');
-    Route::get('/view', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
-    Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
-    Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
+    // Route::get('/view', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
+    // Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
+    // Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:kelgiri'])->group(function () {
     Route::get('/kelgiri', function () {
         return view('user.kelgiri.main.index');
     })->name('kelgiri.dashboard');
+    Route::get('/view', [UserKelgiriController::class, 'index'])->name('user_kelgiri.view');
 });
 
 Route::prefix('Giri')->group(function () {
@@ -83,11 +85,11 @@ Route::prefix('Giri')->group(function () {
 
 Route::prefix('Penataban')->group(function () {
     Route::get('/view', [PenatabanController::class, 'index'])->name('penataban.view');
-    Route::get('/add',[PenatabanController::class, 'create'])->name('penataban.add');
-    Route::post('/store',[PenatabanController::class, 'store'])->name('penataban.store');
-    Route::get('/edit/{id}',[penatabanController::class, 'edit'])->name('penataban.edit');
-    Route::post('/update/{id}',[PenatabanController::class, 'update'])->name('penataban.update');
-    Route::get('/delete/{id}',[PenatabanController::class, 'destroy'])->name('penataban.delete');
+    Route::get('/add', [PenatabanController::class, 'create'])->name('penataban.add');
+    Route::post('/store', [PenatabanController::class, 'store'])->name('penataban.store');
+    Route::get('/edit/{id}', [penatabanController::class, 'edit'])->name('penataban.edit');
+    Route::post('/update/{id}', [PenatabanController::class, 'update'])->name('penataban.update');
+    Route::get('/delete/{id}', [PenatabanController::class, 'destroy'])->name('penataban.delete');
 });
 
 

@@ -1,21 +1,21 @@
 @extends('user.kelgiri.master.master')
 @section('user')
     <div class="container-fluid">
-        <h1 class="h3 mb-2 text-gray-800">Tambah Data Warga Miskin Kecamatan Mojopanggung</h1>
+        <h1 class="h3 mb-2 text-gray-800">Tambah Data Warga Miskin Kelurahan Giri</h1>
         <div class="row d-flex justify-content-between">
             <div class="col">
                 <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
             </div>
             <div class="co"><button class="btn btn-success add-more"> Tambah Data </button></div>
         </div>
-        <form id="validate" class="user" method="POST" autocomplete="off" action="{{route('mojopanggung.store')}}" enctype="multipart/form-data">
+        <form id="validate" class="user" method="POST" autocomplete="off" action="{{route('kelgiri.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="add-more-data">
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label for="nik">NIK</label>
+                                <label for="nik">No KK</label>
                                 <input type="text" required class="form-control nik form-control-lg" id="nik"
                                     placeholder="NIK" minlength="16"  maxlength="16" pattern="[0-9]{12}" name="nik[]"  >
                                 <br>
