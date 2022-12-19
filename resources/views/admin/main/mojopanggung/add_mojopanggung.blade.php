@@ -65,11 +65,7 @@
                 'nik[]': {
                     required: true,
                     number: true,
-                    minlength: 16,
-<<<<<<< HEAD
-                  
-=======
->>>>>>> anis
+                    minlength: 16,    
                 },
                 'nama_warga[]': {
                     required: true,
