@@ -34,14 +34,27 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
     Route::get('/dashboard/admin', function () {
 
-        $mojopanngung = warga::select(DB::raw("COUNT(*) as jumlah"))
+        $mojopanggung = warga::select(DB::raw("COUNT(*) as jumlah"))
         ->where('kelurahan', '=', 'mojopanggung')->count();
 
-        $mojopanngung = warga::select(DB::raw("COUNT(*) as jumlah"))
-        ->where('kelurahan', '=', 'mojopanggung')->count();
+        $Giri = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('kelurahan', '=', 'Giri')->count();
+
+        $Boyolangu = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('kelurahan', '=', 'Boyolangu')->count();
+
+        $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('kelurahan', '=', 'Grogol')->count();
+
+        $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('kelurahan', '=', 'Jembersari')->count();
         
-        return view('admin.main.index', compact('mojopanggung'));
+        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('kelurahan', '=', 'penataban')->count();
+
+        return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
     })->name('admin.dashboard');
+    
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung'])->group(function () {
@@ -54,7 +67,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:kelgiri'])->group(function () {
-    Route::get('/home', function () {
+    Route::get('/kelgiri', function () {
         return view('user.kelgiri.main.index');
     })->name('kelgiri.dashboard');
 });
@@ -113,5 +126,7 @@ Route::prefix('grogol')->group(function () {
     Route::get('/delete/{id}', [mojopanggung::class, 'destroy'])->name('grogol.delete');
 });
 Route::get('/test', [TestController::class, 'test']);
+
+
 
 Route::get('/auth/logout', [AdminController::class, 'logout'])->name('admin.logout')->middleware('auth');
