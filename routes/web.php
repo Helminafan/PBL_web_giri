@@ -59,19 +59,19 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung'])->group(function () {
-    Route::get('/home', function () {
+    Route::get('/mojopanggung/dashboard', function () {
         return view('user.mojopanggung.main.index');
     })->name('mojopanggung.dashboard');
-    // Route::get('/view', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
-    // Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
-    // Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
+    Route::get('/mojopanggung/view', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
+    Route::get('/mojopanggung/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
+    Route::post('/mojopanggung/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:kelgiri'])->group(function () {
     Route::get('/kelgiri', function () {
         return view('user.kelgiri.main.index');
     })->name('kelgiri.dashboard');
-    Route::get('/view', [UserKelgiriController::class, 'index'])->name('user_kelgiri.view');
+    Route::get('/giri/view', [UserKelgiriController::class, 'index'])->name('user_kelgiri.view');
 });
 
 Route::prefix('Giri')->group(function () {
