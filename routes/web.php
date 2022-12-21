@@ -35,7 +35,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin']], function () {
     Route::get('/dashboard', function () {
-
         $mojopanggung = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('kelurahan', '=', 'mojopanggung')->count();
 
@@ -76,13 +75,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jets
 //         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
 //         ->where('kelurahan', '=', 'Jembersari')->count();
 
-Route::group(['prefix' => 'mojopanggung', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung']], function () {
+Route::group(['prefix' => 'user_mojopanggung', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung']], function () {
     Route::get('/dashboard', function () {
         return view('user.mojopanggung.main.index');
     })->name('mojopanggung.dashboard');
-    // Route::get('/view', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
-    // Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
-    // Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
+    Route::get('/view', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
+    Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
+    Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
 });
 
 
@@ -93,7 +92,7 @@ Route::group(['prefix' => 'mojopanggung', 'middleware' => ['auth:sanctum', confi
 //     Route::get('/tambah', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
 //     Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
 //     Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
-// });
+// }); 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:kelgiri'])->group(function () {
     Route::get('/kelgiri', function () {
