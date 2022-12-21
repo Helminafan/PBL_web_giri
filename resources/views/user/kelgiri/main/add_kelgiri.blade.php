@@ -76,11 +76,27 @@
                     required:true,
                 },
             },
-            // messages: {
-            //     'empname[]' : "Please input file*",
-            //     'phone[]' : "Please input file*",
-            //     'department[]' : "Please input file*",
-            // },
+            messages: {
+                'nik[]': {
+                    required: "No KK tidak boleh kosong",
+                    number: "data harus berupa angka",
+                    minlength: "inputan harus berjumlah 16",
+                   
+                },
+                'nama_warga[]': {
+                    required: "nama lengkap tidak boleh kosong",
+                },
+                'alamat[]': {
+                    required: "Alamat tidak boleh kosong",
+                },
+                'no_hp[]': {
+                    required: "No HP tidak boleh kosong",
+                    number: "data harus berupa angka",
+                },
+                'foto_ktp[]': {
+                    required: "File Harus Ditambahkan",
+                },
+            },
         });
     </script>
 @endpush
