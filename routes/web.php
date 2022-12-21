@@ -58,49 +58,49 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jets
     })->name('admin.dashboard');
     Route::get('/laporan', [ExportController::class, 'export'])->name('kelurahan.export');
 });
-// Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin'])->group(function () {
-//     Route::get('/dashboard/admin', function () {
 
-//         $mojopanggung = warga::select(DB::raw("COUNT(*) as jumlah"))
-//         ->where('kelurahan', '=', 'mojopanggung')->count();
 
-//         $Giri = warga::select(DB::raw("COUNT(*) as jumlah"))
-//         ->where('kelurahan', '=', 'Giri')->count();
-
-//         $Boyolangu = warga::select(DB::raw("COUNT(*) as jumlah"))
-//         ->where('kelurahan', '=', 'Boyolangu')->count();
-
-//         $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
-//         ->where('kelurahan', '=', 'Grogol')->count();
-
-//         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
-//         ->where('kelurahan', '=', 'Jembersari')->count();
-
-Route::group(['prefix' => 'mojopanggung', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung']], function () {
+Route::group(['prefix' => 'user_mojopanggung', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung']], function () {
     Route::get('/dashboard', function () {
         return view('user.mojopanggung.main.index');
     })->name('mojopanggung.dashboard');
-    // Route::get('/view', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
-    // Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
-    // Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
+    Route::get('/view', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
+    Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
+    Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
 });
 
+Route::group(['prefix' => 'user_kelgiri', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:kelgiri']], function () {
+    Route::get('/dashboard', function () {
 
-// Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung'])->group(function () {
-//     Route::get('/home', function () {
-//         return view('user.mojopanggung.main.index');
-//     })->name('mojopanggung.dashboard');
-//     Route::get('/tambah', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
-//     Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
-//     Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
-// });
+        $mojopanggung = warga::select(DB::raw("COUNT(*) as jumlah"))
+            ->where('kelurahan', '=', 'mojopanggung')->count();
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:kelgiri'])->group(function () {
-    Route::get('/kelgiri', function () {
-        return view('user.kelgiri.main.index');
+        $Giri = warga::select(DB::raw("COUNT(*) as jumlah"))
+            ->where('kelurahan', '=', 'Giri')->count();
+
+        $Boyolangu = warga::select(DB::raw("COUNT(*) as jumlah"))
+            ->where('kelurahan', '=', 'Boyolangu')->count();
+
+        $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
+            ->where('kelurahan', '=', 'Grogol')->count();
+
+        $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
+            ->where('kelurahan', '=', 'Jembersari')->count();
+
+        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
+            ->where('kelurahan', '=', 'penataban')->count();
+
+        return view('user.kelgiri.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
     })->name('kelgiri.dashboard');
-    Route::get('/giri/view', [UserKelgiriController::class, 'index'])->name('user_kelgiri.view');
+    Route::get('/view', [UserKelgiriController::class, 'index'])->name('user_kelgiri.view');
+    Route::get('/add', [UserKelgiriController::class, 'create'])->name('user_kelgiri.add');
+    Route::post('/store', [UserKelgiriController::class, 'store'])->name('user_kelgiri.store');
+
+
 });
+
+
+
 
 Route::prefix('Giri')->group(function () {
     Route::get('/view', [GiriController::class, 'index'])->name('giri.view');

@@ -8,7 +8,7 @@
             </div>
             <div class="co"><button class="btn btn-success add-more"> Tambah Data </button></div>
         </div>
-        <form id="validate" class="user" method="POST" autocomplete="off" action="{{route('kelgiri.store')}}" enctype="multipart/form-data">
+        <form id="validate" class="user" method="POST" autocomplete="off" action="{{route('user_kelgiri.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="add-more-data">
                 <div class="card shadow mb-4">
@@ -17,7 +17,7 @@
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="nik">No KK</label>
                                 <input type="text" required class="form-control nik form-control-lg" id="nik"
-                                    placeholder="NIK" minlength="16"  maxlength="16" pattern="[0-9]{12}" name="nik[]"  >
+                                    placeholder="No KK" minlength="16"  maxlength="16" name="nik[]"  >
                                 <br>
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">

@@ -42,7 +42,7 @@
             <span>Kel.Penataban</span></a>
     </li> --}}
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('user_kelgiri.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Giri</span></a>
     </li>

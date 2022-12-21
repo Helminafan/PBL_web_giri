@@ -11,7 +11,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Data Warga Kec Mojopanggung</h6>
                             </div>
                             <div class="co">
-                                <a href="{{ route('mojopanggung.add') }}"><button class="btn btn-primary"> Tambah Data
+                                <a href="{{ route('user_kelgiri.add') }}"><button class="btn btn-primary"> Tambah Data
                                     </button></a>
                             </div>
                         </div>
