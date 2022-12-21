@@ -17,8 +17,8 @@ class mojopanggung extends Controller
      */
     public function index()
     {
-        $data = DB::table('warga')
-            ->where('kelurahan', '=', 'mojopanggung')
+        $data = warga::with('user')
+            ->where('id_kelurahan', '=', 2)
             ->get();
         return view('admin.main.mojopanggung.view_mojopanggung', compact('data'));
     }
@@ -56,7 +56,7 @@ class mojopanggung extends Controller
                 $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
             }
             $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "mojopanggung";
+            $data->id_kelurahan = 2;
             $data->save();
         }
 

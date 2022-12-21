@@ -18,7 +18,7 @@ class KelGiri extends Controller
     public function index()
     {
         $data = DB::table('warga')
-            ->where('kelurahan', '=', 'Giri')
+            ->where('id_kelurahan', '=', 3)
             ->get();
         return view('admin.main.kel_giri.view_kelgiri', compact('data'));
     }
@@ -55,7 +55,7 @@ class KelGiri extends Controller
                 $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
             }
             $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "Giri";
+            $data->id_kelurahan = 3;
             $data->save();
         }
 
