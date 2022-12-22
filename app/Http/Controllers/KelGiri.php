@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\warga;
+use DB;
+use File;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,7 +17,9 @@ class KelGiri extends Controller
      */
     public function index()
     {
-        $data = warga::all();
+        $data = DB::table('warga')
+            ->where('id_kelurahan', '=', 3)
+            ->get();
         return view('admin.main.kel_giri.view_kelgiri', compact('data'));
     }
 
@@ -36,11 +40,13 @@ class KelGiri extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         foreach ($request->nama_warga as $key => $nama_warga) {
-            $data = warga::find($id);
+
+            $data = new warga();
             $data->nama_warga = $nama_warga;
+            $data->nik = $request->nik[$key];
             $data->alamat = $request->alamat[$key];
             $data->no_hp = $request->no_hp[$key];
             if ($data->foto_ktp = $request->file('foto_ktp')[$key]) {
@@ -49,12 +55,12 @@ class KelGiri extends Controller
                 $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
             }
             $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "Giri";
+            $data->id_kelurahan = 3;
             $data->save();
         }
 
 
-        return redirect()->route('kelgiri.view')->with('success', 'Data Berhasil Ditambah');;
+        return redirect()->route('kelgiri.view')->with('success', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -90,24 +96,20 @@ class KelGiri extends Controller
      */
     public function update(Request $request, $id)
     {
-        foreach ($request->nama_warga as $key => $nama_warga) {
-            $data = warga::find($id);
-            $data->nama_warga = $nama_warga;
-            $data->alamat = $request->alamat[$key];
-            $data->no_hp = $request->no_hp[$key];
-            if ($data->foto_ktp = $request->file('foto_ktp')[$key]) {
-                $extension = $request->file('foto_ktp')[$key]->getClientOriginalExtension();
-                $newbaru = $request->nama_warga[$key] . '-' . now()->timestamp . '.' . $extension;
-                $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
+        $data = warga::find($id);
+        if ($request->hasFile('foto_ktp')) {
+            if (File::exists('fotoPetugas/' . $data->foto_ktp)) {
+                File::delete('fotoPetugas/' . $data->foto_ktp);
             }
-            $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "Giri";
-            $data->save();
-
-            $notifikasi = array();
-
-            return redirect()->route('kelgiri.view')->with('info', 'USER TELAH BERHASIL DIUBAH');
+            $request->file('foto_ktp')->move('fotoPetugas/', $request->file('foto_ktp')->getClientOriginalName());
+            $data->foto_ktp = $request->file('foto_ktp')->getClientOriginalName();
         }
+        $data->nama_warga   = $request->nama_warga;
+        $data->nik   = $request->nik;
+        $data->no_hp   = $request->no_hp;
+        $data->alamat = $request->alamat;
+        $data->update();
+        return redirect()->route('kelgiri.view')->with('Success', 'Update Warga berhasil');
     }
 
     /**

@@ -51,7 +51,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Download app</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
           <!-- <li><a class="nav-link scrollto" href="#features">Features</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li> -->
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
@@ -71,7 +71,6 @@
       <div class="row justify-content-between">
         <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
           <div data-aos="zoom-out">
-            <h4>Selamat Datang</h4>
             <h1>DATA WARGA MISKIN NON-DTKS WILAYAH <span>KECAMATAN GIRI</span></h1>
             <div class="text-center text-lg-start">
               <a href="{{ route('login')}}" class="btn-get-started scrollto">Login</a>

@@ -4,20 +4,21 @@
         <h1 class="h3 mb-2 text-gray-800">Tambah Data Warga Miskin Kelurahan Giri</h1>
         <div class="row d-flex justify-content-between">
             <div class="col">
-                <p class="mb-4">Data warga miskin<a target="_blank" <!-- DataTales Example -->
+                <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
             </div>
             <div class="co"><button class="btn btn-success add-more"> Tambah Data </button></div>
         </div>
-        <form class="user" method="POST" action="{{route('kelgiri.store')}}" enctype="multipart/form-data">
+        <form id="validate" class="user" method="POST" autocomplete="off" action="{{ route('kelgiri.store') }}"
+            enctype="multipart/form-data">
             @csrf
             <div class="add-more-data">
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label for="nik">NIK</label>
+                                <label for="nik">No KK</label>
                                 <input type="text" required class="form-control nik form-control-lg" id="nik"
-                                    placeholder="NIK" minlength="16"  maxlength="16" pattern="[0-9]{12}" name="nik[]"  >
+                                    placeholder="No KK" minlength="16" maxlength="16" name="nik[]">
                                 <br>
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -28,7 +29,8 @@
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="Alamat">Alamat</label>
-                                <input type="text" required class="form-control form-control-lg" id="alamat"placeholder="Alamat" name="alamat[]">
+                                <input type="text" required class="form-control form-control-lg"
+                                    id="alamat"placeholder="Alamat" name="alamat[]">
                                 <br>
                             </div>
                             <div class="col-sm-6">
@@ -58,29 +60,49 @@
 @push('js')
     <script src="{{ asset('admin/tambahdata/scriptTambah.js') }}"></script>
     <script type="text/javascript">
-    $('#validate').validate({
+        $('#validate').validate({
             rules: {
                 'nik[]': {
                     required: true,
+                    number: true,
+                    minlength: 16,
+                  
                 },
                 'nama_warga[]': {
-                    required:true,
+                    required: true,
                 },
                 'alamat[]': {
-                    required:true,
+                    required: true,
                 },
                 'no_hp[]': {
-                    required:true,
+                    required: true,
+                    number: true,
                 },
                 'foto_ktp[]': {
-                    required:true,
+                    required: true,
                 },
             },
-            // messages: {
-            //     'empname[]' : "Please input file*",
-            //     'phone[]' : "Please input file*",
-            //     'department[]' : "Please input file*",
-            // },
+            messages: {
+                'nik[]': {
+                    required: "No KK tidak boleh kosong",
+                    number: "data harus berupa angka",
+                    minlength: "inputan harus berjumlah 16",
+                   
+                },
+                'nama_warga[]': {
+                    required: "nama lengkap tidak boleh kosong",
+                },
+                'alamat[]': {
+                    required: "Alamat tidak boleh kosong",
+                },
+                'no_hp[]': {
+                    required: "No HP tidak boleh kosong",
+                    number: "data harus berupa angka",
+                },
+                'foto_ktp[]': {
+                    required: "File Harus Ditambahkan",
+                },
+            },
         });
     </script>
 @endpush

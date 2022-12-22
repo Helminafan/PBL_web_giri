@@ -38,7 +38,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $row->nama_warga }}</td>
                                             <td>{{ $row->alamat }}</td>
-                                            <td>{{ $row->kelurahan }}</td>
+                                            <td>{{ $row->user->name}}</td>
                                             <td>{{ $row->no_hp }}</td>
                                             <td>{{ $row->created_at }}</td>
                                             <td>
