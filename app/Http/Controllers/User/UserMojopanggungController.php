@@ -16,7 +16,7 @@ class UserMojopanggungController extends Controller
      */
     public function index()
     {
-        $data = DB::table('warga')
+        $data = warga::with('user')
             ->where('kelurahan', '=', 'mojopanggung')
             ->get();
         return view('user.mojopanggung.main.view_mojopanggung', compact('data'));

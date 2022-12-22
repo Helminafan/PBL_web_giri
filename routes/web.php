@@ -13,6 +13,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\User\UserJambesariController;
 use App\Http\Controllers\User\UserKelgiriController;
 use App\Http\Controllers\User\UserMojopanggungController;
+use App\Http\Controllers\User\UserPenatabanController;
 use App\Models\warga;
 use Illuminate\Support\Facades\Route;
 
