@@ -11,7 +11,7 @@ class ExportController extends Controller
 {
 public function export()
 {
-        $data = Excel::download(new MultipleExport, 'DataWargaMiskin.xlsx');
+        $data = Excel::download(new MultipleExport, 'Data_Warga_Miskin.xlsx');
         ob_end_clean();
         return $data;
 }

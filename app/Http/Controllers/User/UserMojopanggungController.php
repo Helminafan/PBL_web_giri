@@ -73,7 +73,7 @@ class UserMojopanggungController extends Controller
                 $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
             }
             $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "mojopanggung";
+            $data->kelurahan = "Mojopanggung";
             $data->save();
         }
 
