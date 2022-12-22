@@ -1,11 +1,11 @@
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
+        {{-- <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text" style="font-size: 12px">DATA WARGA MISKIN NON-DTKS WILAYAH KECAMATAN GIRI</div>
+        </div> --}}
+        <div class="sidebar-brand-text mx-3">Kelurahan Jambesari</div>
     </a>
 
     <!-- Divider -->
@@ -28,7 +28,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
 
-    <li class="nav-item active">
+    {{-- <li class="nav-item active">
         <a class="nav-link" href="{{route('kelgiri.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>GIRI</span></a>
@@ -40,13 +40,13 @@
         <a class="nav-link" href="{{route('penataban.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Penataban</span></a>
-    </li>
+    </li> --}}
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('kelgiri.view')}}">
+        <a class="nav-link" href="{{route('user_jambesari.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kel.Giri</span></a>
+            <span>Kel.Jambesari</span></a>
     </li>
-    <li class="nav-item active">
+    {{--<li class="nav-item active">
         <a class="nav-link" href="{{route('boyolangu.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Desa.Boyolangu</span></a>
@@ -57,7 +57,7 @@
             <span>Desa.Grogol</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('jambesari.view')}}">
+        <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Jambersari</span></a>
     </li>
@@ -65,7 +65,7 @@
         <a class="nav-link" href="{{route('mojopanggung.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Mojopanggung</span></a>
-    </li>
+    </li> --}}
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">

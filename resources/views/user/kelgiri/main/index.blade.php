@@ -178,7 +178,7 @@
                                 <i class="fas fa-circle" style="color: #f6c23e"></i> Grogol
                             </span>
                             <span class="mr-2">
-                                <i class="fas fa-circle" style="color: #11c720"></i> Jembersari
+                                <i class="fas fa-circle" style="color: #11c720"></i> Jambersari
                             </span>
                             <span class="mr-2">
                                 <i class="fas fa-circle" style="color: #fd7e14"></i> Mojopanggung
@@ -386,18 +386,18 @@
         var Giri = <?php echo json_encode($Giri); ?>;
         var Boyolangu = <?php echo json_encode($Boyolangu); ?>;
         var Grogol = <?php echo json_encode($Grogol); ?>;
-        var Jembersari = <?php echo json_encode($Jembersari); ?>;
+        var Jembersari = <?php echo json_encode($Jambersari); ?>;
         var mojopanggung = <?php echo json_encode($mojopanggung); ?>;
         var myBarChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["penataban", "Giri", "Boyolangu", "Grogol", "Jembersari", "Mojopanggung"],
+                labels: ["penataban", "Giri", "Boyolangu", "Grogol", "Jambersari", "Mojopanggung"],
                 datasets: [{
                     label: "Revenue",
                     backgroundColor: "#4e73df",
                     hoverBackgroundColor: "#2e59d9",
                     borderColor: "#4e73df",
-                    data: [penataban, Giri, Boyolangu, Grogol, Jembersari, mojopanggung],
+                    data: [penataban, Giri, Boyolangu, Grogol, Jambersari, mojopanggung],
                 }],
             },
             options: {
@@ -474,7 +474,7 @@
         var Giri = <?php echo json_encode($Giri); ?>;
         var Boyolangu = <?php echo json_encode($Boyolangu); ?>;
         var Grogol = <?php echo json_encode($Grogol); ?>;
-        var Jembersari = <?php echo json_encode($Jembersari); ?>;
+        var Jembersari = <?php echo json_encode($Jambersari); ?>;
         var mojopanggung = <?php echo json_encode($mojopanggung); ?>;
         var myPieChart = new Chart(ctx, {
             type: "doughnut",
@@ -488,7 +488,7 @@
                     "Mojopanggung",
                 ],
                 datasets: [{
-                    data: [penataban, Giri, Boyolangu, Grogol, Jembersari, mojopanggung],
+                    data: [penataban, Giri, Boyolangu, Grogol, Jambersari, mojopanggung],
                     backgroundColor: [
                         "#4e73df",
                         "#1cc88a",
