@@ -58,19 +58,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jets
     Route::get('/laporan', [ExportController::class, 'export'])->name('kelurahan.export');
 });
 
-
-//         $Giri = warga::select(DB::raw("COUNT(*) as jumlah"))
-//         ->where('kelurahan', '=', 'Giri')->count();
-
-//         $Boyolangu = warga::select(DB::raw("COUNT(*) as jumlah"))
-//         ->where('kelurahan', '=', 'Boyolangu')->count();
-
-//         $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
-//         ->where('kelurahan', '=', 'Grogol')->count();
-
-//         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
-//         ->where('kelurahan', '=', 'Jembersari')->count();
-
 Route::group(['prefix' => 'mojopanggung', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung']], function () {
     Route::get('/dashboard', function () {
         return view('user.mojopanggung.main.index');
@@ -98,22 +85,14 @@ Route::group(['prefix' => 'user_kelgiri', 'middleware' => ['auth:sanctum', confi
         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('kelurahan', '=', 'Jembersari')->count();
 
-// Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung'])->group(function () {
-//     Route::get('/home', function () {
-//         return view('user.mojopanggung.main.index');
-//     })->name('mojopanggung.dashboard');
-//     Route::get('/tambah', [UserMojopanggungController::class, 'index'])->name('user_mojopanggung.view');
-//     Route::get('/add', [UserMojopanggungController::class, 'create'])->name('user_mojopanggung.add');
-//     Route::post('/store', [UserMojopanggungController::class, 'store'])->name('user_mojopanggung.store');
-// });
+        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
+            ->where('kelurahan', '=', 'penataban')->count();
 
         return view('user.kelgiri.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
     })->name('kelgiri.dashboard');
     Route::get('/view', [UserKelgiriController::class, 'index'])->name('user_kelgiri.view');
     Route::get('/add', [UserKelgiriController::class, 'create'])->name('user_kelgiri.add');
     Route::post('/store', [UserKelgiriController::class, 'store'])->name('user_kelgiri.store');
-
-
 });
 
 
