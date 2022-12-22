@@ -1,7 +1,6 @@
-@extends('admin.master.master')
-@section('content')
+@extends('user.penataban.master.master')
+@section('user')
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Table Kelurahan Penataban</h1>
         <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
@@ -9,10 +8,10 @@
                     <div class="card-header py-3">
                         <div class="row d-flex justify-content-between">
                             <div class="col mt-2">
-                                <h6 class="m-0 font-weight-bold text-primary">Data Warga Kel Penataban</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Data Warga Kel. Penataban</h6>
                             </div>
                             <div class="co">
-                                <a href="{{ route('penataban.add') }}"><button class="btn btn-primary"> Tambah Data
+                                <a href="{{ route('user_penataban.add') }}"><button class="btn btn-primary"> Tambah Data
                                     </button></a>
                             </div>
                         </div>
@@ -39,12 +38,12 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $row->nama_warga }}</td>
                                             <td>{{ $row->alamat }}</td>
-                                            <td>{{ $row->user->name}}</td>
+                                            <td>{{ $row->kelurahan }}</td>
                                             <td>{{ $row->no_hp }}</td>
                                             <td>{{ $row->created_at }}</td>
                                             <td>
-                                                <a href="{{route('penataban.edit', $row->id)}}" class="btn btn-warning"> Edit </a>
-                                                <a href="{{route('penataban.delete', $row->id)}}" id="delete"><button type="button"
+                                                <a href="#" class="btn btn-warning"> Edit </a>
+                                                <a href="#" id="delete"><button type="button"
                                                         class="btn btn-danger delete">Hapus</button></a>
                                             </td>
                                         </tr>
