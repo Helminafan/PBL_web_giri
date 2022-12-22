@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::delete('/delete_pengumuman/{id}', [PengumumanController::class, 'destroy']);
 });
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 
 //Api
 Route::group(['prefix' => 'sur'], function () {

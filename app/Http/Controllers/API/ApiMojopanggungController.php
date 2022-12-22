@@ -16,9 +16,7 @@ class ApiMojopanggungController extends Controller
      */
     public function index()
     {
-        $data = DB::table('warga')
-            ->where('kelurahan', '=', 'mojopanggung')
-            ->get();
+        $data =warga::with('user')->where('id_kelurahan','=', 2);
         return response()->json([
             'data' => $data,
         ], 200);
