@@ -120,7 +120,7 @@ Route::group(['prefix' => 'user_penataban', 'middleware' => ['auth:sanctum', con
 
 
         return view('user.penataban.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
-    })->name('kelgiri.dashboard');
+    })->name('penataban.dashboard');
     Route::get('/view', [UserPenatabanController::class, 'index'])->name('user_penataban.view');
     Route::get('/add', [UserPenatabanController::class, 'create'])->name('user_penataban.add');
     Route::post('/store', [UserPenatabanController::class, 'store'])->name('user_penataban.store');

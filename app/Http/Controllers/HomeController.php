@@ -19,5 +19,8 @@ class HomeController extends Controller
         if (auth()->user()->hasRole('kelgiri')) {
             return redirect()->route('kelgiri.dashboard');
         }
+        if (auth()->user()->hasRole('penataban')) {
+            return redirect()->route('penataban.dashboard');
+        }
     }
 }

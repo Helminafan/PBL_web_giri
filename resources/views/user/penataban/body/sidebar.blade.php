@@ -5,7 +5,7 @@
         {{-- <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div> --}}
-        <div class="sidebar-brand-text mx-3">Kelurahan Giri</div>
+        <div class="sidebar-brand-text mx-3">Kelurahan Penataban</div>
     </a>
 
     <!-- Divider -->
@@ -29,7 +29,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
 
     {{-- <li class="nav-item active">
-        <a class="nav-link" href="{{route('kelgiri.view')}}">
+        <a class="nav-link" href="{{route('penataban.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>GIRI</span></a>
     </li>
@@ -42,9 +42,9 @@
             <span>Kel.Penataban</span></a>
     </li> --}}
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('user_kelgiri.view')}}">
+        <a class="nav-link" href="{{route('user_penataban.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kel.Giri</span></a>
+            <span>Kel.Penataban</span></a>
     </li>
     {{--<li class="nav-item active">
         <a class="nav-link" href="{{route('boyolangu.view')}}">

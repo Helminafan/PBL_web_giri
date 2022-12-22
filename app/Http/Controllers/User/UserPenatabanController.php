@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\warga;
 use Illuminate\Http\Request;
+use DB;
 
 
 class UserPenatabanController extends Controller
@@ -16,10 +18,9 @@ class UserPenatabanController extends Controller
     public function index()
     {
         $data = DB::table('warga')
-        ->where('kelurahan', '=', 'Giri')
-        ->get();
-    return view('user.kelgiri.main.view_kelgiri', compact('data'));
-        
+            ->where('kelurahan', '=', 'penataban')
+            ->get();
+        return view('user.penataban.main.view_penataban', compact('data'));
     }
 
     /**
@@ -29,7 +30,7 @@ class UserPenatabanController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.penataban.main.add_penataban');
     }
 
     /**
@@ -40,7 +41,45 @@ class UserPenatabanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        foreach ($request->nama_warga as $key => $nama_warga) {
+
+            //     $request->validate(
+            //         [
+            //         'nik.*'         => 'required|numeric|min_digits:12|distinct',
+            //         'nik.0'         => 'required|numeric|min_digits:12',
+            //         'nama_warga.*'  => 'required',
+            //         'alamat.*'      => 'required',
+            //         'no_hp.*'       => 'required|numeric|min_digits:12',
+            //         'foto_ktp.*'    => 'required',
+            //         ],
+            //         [
+            //             'nik.*.required'            => "NIK tidak boleh kosong",
+            //             'nik.*.min_digits'          => "NIK harus berjumlah 12 digit",
+            //             'nama_warga.*.required'     => "Nama Warga Harus diisi",
+            //             'alamat.*.required'         => "Alamat harus diisi",
+            //             'no_hp.*.required'          => "Nomor HP harus diisi",
+            //             'no_hp.*.min_digits'        => "Nomor harus berjumlah 12 digit",
+            //             'foto_ktp.*.required'       => "Gambar Foto KTP harus dtambahkan",
+            //         ]
+            // );
+
+            $data = new warga();
+            $data->nama_warga = $nama_warga;
+            $data->nik = $request->nik[$key];
+            $data->alamat = $request->alamat[$key];
+            $data->no_hp = $request->no_hp[$key];
+            if ($data->foto_ktp = $request->file('foto_ktp')[$key]) {
+                $extension = $request->file('foto_ktp')[$key]->getClientOriginalExtension();
+                $newbaru = $request->nama_warga[$key] . '-' . now()->timestamp . '.' . $extension;
+                $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
+            }
+            $data['foto_ktp'] = $newbaru;
+            $data->kelurahan = "Penataban";
+            $data->save();
+        }
+
+
+        return redirect()->route('user_penataban.view')->with('success', 'Data Berhasil Ditambah');
     }
 
     /**
