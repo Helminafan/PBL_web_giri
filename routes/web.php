@@ -36,22 +36,22 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:admin']], function () {
     Route::get('/dashboard', function () {
         $mojopanggung = warga::select(DB::raw("COUNT(*) as jumlah"))
-            ->where('kelurahan', '=', 'mojopanggung')->count();
+            ->where('id_kelurahan', '=', 2)->count();
 
         $Giri = warga::select(DB::raw("COUNT(*) as jumlah"))
-            ->where('kelurahan', '=', 'Giri')->count();
+            ->where('id_kelurahan', '=', 3)->count();
 
         $Boyolangu = warga::select(DB::raw("COUNT(*) as jumlah"))
-            ->where('kelurahan', '=', 'Boyolangu')->count();
+            ->where('id_kelurahan', '=', 4)->count();
 
         $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
-            ->where('kelurahan', '=', 'Grogol')->count();
+            ->where('id_kelurahan', '=', 5)->count();
 
         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
-            ->where('kelurahan', '=', 'Jembersari')->count();
+            ->where('id_kelurahan', '=', 7)->count();
 
         $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
-            ->where('kelurahan', '=', 'penataban')->count();
+            ->where('id_kelurahan', '=', 6)->count();
 
         return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
     })->name('admin.dashboard');
@@ -88,6 +88,8 @@ Route::group(['prefix' => 'user_kelgiri', 'middleware' => ['auth:sanctum', confi
         $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('kelurahan', '=', 'penataban')->count();
 
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:giri'])->group(function () {
+    Route::get('/kelgiri', function () {
         return view('user.kelgiri.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
     })->name('kelgiri.dashboard');
     Route::get('/view', [UserKelgiriController::class, 'index'])->name('user_kelgiri.view');

@@ -19,4 +19,8 @@ class warga extends Model
         'foto_ktp',
         'nik'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_kelurahan', 'id');
+    }
 }
