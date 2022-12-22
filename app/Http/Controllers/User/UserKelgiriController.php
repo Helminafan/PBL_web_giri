@@ -16,8 +16,8 @@ class UserKelgiriController extends Controller
      */
     public function index()
     {
-        $data = DB::table('warga')
-            ->where('kelurahan', '=', 'Giri')
+        $data = warga::with('user')
+            ->where('id_kelurahan', '=', 3)
             ->get();
         return view('user.kelgiri.main.view_kelgiri', compact('data'));
     }
@@ -52,7 +52,7 @@ class UserKelgiriController extends Controller
                 $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
             }
             $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "Giri";
+            $data->id_kelurahan = 3;
             $data->save();
         }
 

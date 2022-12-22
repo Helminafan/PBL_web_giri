@@ -103,7 +103,7 @@
             </div>
 
             <!-- Content Row -->
-            button
+
             <div class="row">
 
                 <!-- Area Chart -->
