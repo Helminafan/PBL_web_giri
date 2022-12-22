@@ -18,7 +18,7 @@ class PenatabanController extends Controller
     public function index()
     {
         $data = DB::table('warga')
-        ->where('kelurahan', '=', 'penataban')
+        ->where('id_kelurahan', '=', 6)
         ->get();
     return view('admin.main.kel_penataban.view_penataban', compact('data'));
     }
@@ -56,7 +56,7 @@ class PenatabanController extends Controller
                     $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
                 }
                 $data['foto_ktp'] = $newbaru;
-                $data->kelurahan = "penataban";
+                $data->id_kelurahan = 6;
                 $data->save();
 
             }

@@ -15,7 +15,7 @@ class GrogolController extends Controller
     public function index()
     {
         $data = DB::table('warga')
-            ->where('kelurahan', '=', 'grogol')
+            ->where('id_kelurahan', '=', 5)
             ->get();
         return view('admin.main.desa_grogol.view_grogol', compact('data'));
     }

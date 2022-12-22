@@ -17,7 +17,7 @@ class boyolangucontroller extends Controller
     public function index()
     {
         $data = DB::table('warga')
-            ->where('kelurahan', '=', 'Boyolangu')
+            ->where('id_kelurahan', '=', 4)
             ->get();
         return view('admin.main.boyolangu.view_boyolangu', compact('data'));
     }
@@ -52,7 +52,7 @@ class boyolangucontroller extends Controller
                 $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
             }
             $data['foto_ktp'] = $newbaru;
-            $data->kelurahan = "Boyolangu";
+            $data->id_kelurahan = 4;
             $data->save();
         }
 
