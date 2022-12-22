@@ -9,6 +9,7 @@ use App\Http\Controllers\API\PengumumanController;
 use App\Http\Controllers\API\SuratController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\jenissuratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,14 @@ Route::group(['prefix' => 'sur'], function () {
     Route::post('surat/add', [SuratController::class, 'add']);
     Route::post('surat/update',[SuratController::class, 'update']);
     Route::post('surat/delete',[SuratController::class, 'delete']);
+    });
+});
+
+Route::group(['prefix' => 'jenissur'], function () {
+    Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/jenissurat', [jenissuratController::class, 'index']);
+    Route::post('jenissurat/add', [jenissuratController::class, 'add']);
+    Route::post('jenissurat/update',[jenissuratController::class, 'update']);
+    Route::post('jenissurat/delete',[jenissuratController::class, 'delete']);
     });
 });

@@ -49,13 +49,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jets
         $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 5)->count();
 
-        $Jambersari = warga::select(DB::raw("COUNT(*) as jumlah"))
+        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 6)->count();
+
+        $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 7)->count();
 
-        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
-            ->where('id_kelurahan', '=', 6)->count();
 
-        return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jambersari', 'penataban'));
+        return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
     })->name('admin.dashboard');
     Route::get('/laporan', [ExportController::class, 'export'])->name('kelurahan.export');
 });
@@ -97,7 +98,7 @@ Route::group(['prefix' => 'user_kelgiri', 'middleware' => ['auth:sanctum', confi
     Route::post('/store', [UserKelgiriController::class, 'store'])->name('user_kelgiri.store');
 });
 
-Route::group(['prefix' => 'user_jambesari', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:jambesari']], function () {
+Route::group(['prefix' => 'user_penataban', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:penataban']], function () {
     Route::get('/dashboard', function () {
 
         $mojopanggung = warga::select(DB::raw("COUNT(*) as jumlah"))
@@ -112,19 +113,20 @@ Route::group(['prefix' => 'user_jambesari', 'middleware' => ['auth:sanctum', con
         $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 5)->count();
 
-        $Jambersari = warga::select(DB::raw("COUNT(*) as jumlah"))
+        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 6)->count();
+
+        $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 7)->count();
 
-        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
-            ->where('id_kelurahan', '=', 6)->count();
 
-        return view('user.jambesari.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jambersari', 'penataban'));
-    })->name('jambesari.dashboard');
-    Route::get('/view', [UserJambesariController::class, 'index'])->name('user_jambesari.view');
-    Route::get('/add', [UserJambesariController::class, 'create'])->name('user_jambesari.add');
-    Route::post('/store', [UserJambesariController::class, 'store'])->name('user_jambesari.store');
+
+        return view('user.penataban.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
+    })->name('penataban.dashboard');
+    Route::get('/view', [UserPenatabanController::class, 'index'])->name('user_penataban.view');
+    Route::get('/add', [UserPenatabanController::class, 'create'])->name('user_penataban.add');
+    Route::post('/store', [UserPenatabanController::class, 'store'])->name('user_penataban.store');
 });
-
 
 
 

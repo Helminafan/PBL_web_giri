@@ -21,6 +21,8 @@ class HomeController extends Controller
         if (auth()->user()->hasRole('giri')) {
             return redirect()->route('kelgiri.dashboard');
         }
+        
+<<<<<<< HEAD
 
         if (auth()->user()->hasRole('boyolangu')) {
             return redirect()->route('mojopanggung.dashboard');
@@ -36,6 +38,13 @@ class HomeController extends Controller
 
         if (auth()->user()->hasRole('jambesari')) {
             return redirect()->route('jambesari.dashboard');
+=======
+        if (auth()->user()->hasRole('penataban')) {
+            return redirect()->route('penataban.dashboard');
+>>>>>>> anis
+        }
+        if (auth()->user()->hasRole('penataban')) {
+            return redirect()->route('penataban.dashboard');
         }
     }
 }

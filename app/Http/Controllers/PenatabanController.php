@@ -17,7 +17,7 @@ class PenatabanController extends Controller
      */
     public function index()
     {
-        $data = DB::table('warga')
+        $data = warga::with('user') 
         ->where('id_kelurahan', '=', 6)
         ->get();
     return view('admin.main.kel_penataban.view_penataban', compact('data'));
