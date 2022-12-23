@@ -1,5 +1,5 @@
-@extends('admin.master.master')
-@section('content')
+@extends('user.grogol.master.master')
+@section('user')
     <div class="container-fluid">
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Table Desa Grogol</h1>
@@ -11,7 +11,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Data Warga Desa Grogol</h6>
                             </div>
                             <div class="co">
-                                <a href="{{ route('mojopanggung.add') }}"><button class="btn btn-primary"> Tambah Data
+                                <a href="{{ route('user_grogol.add') }}"><button class="btn btn-primary"> Tambah Data
                                     </button></a>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                                         <th>Kelurahan</th>
                                         <th>No Hp</th>
                                         <th>Tanggal Ditambah</th>
-                                        <th>Aksi</th>
+                                    
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -38,14 +38,10 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $row->nama_warga }}</td>
                                             <td>{{ $row->alamat }}</td>
-                                            <td>{{ $row->kelurahan }}</td>
+                                            <td>{{ $row->user->name }}</td>
                                             <td>{{ $row->no_hp }}</td>
                                             <td>{{ $row->created_at }}</td>
-                                            {{-- <td>
-                                                <a href="{{route('mojopanggung.edit',$row->id)}}" class="btn btn-warning"> Edit </a>
-                                                <a href="{{route('mojopanggung.delete',$row->id)}}" id="delete"><button type="button"
-                                                        class="btn btn-danger delete">Hapus</button></a>
-                                            </td> --}}
+                                           
                                         </tr>
                                     @endforeach
                                 </tbody>
