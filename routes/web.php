@@ -7,9 +7,11 @@ use App\Http\Controllers\mojopanggung;
 use App\Http\Controllers\PenatabanController;
 use App\Http\Controllers\boyolanguController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\GrogolController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JambesariController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\User\UserGrogolController;
 use App\Http\Controllers\User\UserJambesariController;
 use App\Http\Controllers\User\UserKelgiriController;
 use App\Http\Controllers\User\UserMojopanggungController;
@@ -60,6 +62,33 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jets
         return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
     })->name('admin.dashboard');
     Route::get('/laporan', [ExportController::class, 'export'])->name('kelurahan.export');
+});
+
+Route::group(['prefix' => 'Usergrogol', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:grogol']], function () {
+    Route::get('/dashboard', function () {
+        $mojopanggung = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 2)->count();
+
+        $Giri = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 3)->count();
+
+        $Boyolangu = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 4)->count();
+
+        $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 5)->count();
+
+        $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 7)->count();
+
+        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 6)->count();
+
+        return view('user.grogol.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
+    })->name('grogol.dashboard');
+    Route::get('/view', [UserGrogolController::class, 'index'])->name('user_grogol.view');
+    Route::get('/add', [UserGrogolController::class, 'create'])->name('user_grogol.add');
+    Route::post('/store', [UserGrogolController::class, 'store'])->name('user_grogol.store');
 });
 
 Route::group(['prefix' => 'mojopanggung', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung']], function () {
@@ -147,6 +176,15 @@ Route::prefix('Penataban')->group(function () {
     Route::get('/edit/{id}', [penatabanController::class, 'edit'])->name('penataban.edit');
     Route::post('/update/{id}', [PenatabanController::class, 'update'])->name('penataban.update');
     Route::get('/delete/{id}', [PenatabanController::class, 'destroy'])->name('penataban.delete');
+});
+
+Route::prefix('grogol')->group(function () {
+    Route::get('/view', [GrogolController::class, 'index'])->name('grogol.view');
+    Route::get('/add', [GrogolController::class, 'create'])->name('grogol.add');
+    Route::post('/store', [GrogolController::class, 'store'])->name('grogol.store');
+    Route::get('/edit/{id}', [GrogolController::class, 'edit'])->name('grogol.edit');
+    Route::post('/update/{id}', [GrogolController::class, 'update'])->name('grogol.update');
+    Route::get('/delete/{id}', [GrogolController::class, 'destroy'])->name('grogol.delete');
 });
 
 Route::prefix('KelGiri')->group(function () {
