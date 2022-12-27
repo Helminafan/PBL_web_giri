@@ -2,15 +2,18 @@
 @section('content')
     <div class="container-fluid">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Table Kecamatan Giri</h1>
+        <h1 class="h3 mb-2 text-gray-800">Table Desa Grogol</h1>
         <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <div class="row d-flex justify-content-between">
                             <div class="col mt-2">
-                                <h6 class="m-0 font-weight-bold text-primary">Data Warga Kecamatan Giri</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Data Warga Desa Grogol</h6>
                             </div>
-                            
+                            <div class="co">
+                                <a href="{{ route('grogol.add') }}"><button class="btn btn-primary"> Tambah Data
+                                    </button></a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -24,7 +27,7 @@
                                         <th>Kelurahan</th>
                                         <th>No Hp</th>
                                         <th>Tanggal Ditambah</th>
-                                       
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -38,7 +41,11 @@
                                             <td>{{ $row->user->name }}</td>
                                             <td>{{ $row->no_hp }}</td>
                                             <td>{{ $row->created_at }}</td>
-                                           
+                                            <td>
+                                                <a href="{{route('grogol.edit',$row->id)}}" class="btn btn-warning"> Edit </a>
+                                                <a href="{{route('grogol.delete',$row->id)}}" id="delete"><button type="button"
+                                                        class="btn btn-danger delete">Hapus</button></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

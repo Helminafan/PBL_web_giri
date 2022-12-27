@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Models\warga;
+use DB;
 use Illuminate\Http\Request;
 
-class GiriController extends Controller
+class DataWargaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,37 @@ class GiriController extends Controller
      */
     public function index()
     {
-        $data = warga::all();
-        return view("admin.main.tabel", compact('data'));
+        $mojopanggung = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 2)->count();
+
+        $Giri = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 3)->count();
+
+        $Boyolangu = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 4)->count();
+
+        $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 5)->count();
+
+        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 6)->count();
+
+        $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 7)->count();
+        
+        $warga = warga::all()->count();
+
+        return response()->json([
+            'mojopanggung' => $mojopanggung,
+            'giri' => $Giri,
+            'Boyolangu' => $Boyolangu,
+            'Grogol' => $Grogol,
+            'Penataban' => $penataban,
+            'Jembersari' => $Jembersari,
+            'jumlahWarga'=> $warga
+        ],
+            200
+        );
     }
 
     /**
@@ -25,8 +56,7 @@ class GiriController extends Controller
      */
     public function create()
     {
-        // dd('Berhasil');
-        return view('admin.main.kel_giri.add_kelgiri');
+        //
     }
 
     /**

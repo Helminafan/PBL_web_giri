@@ -7,12 +7,15 @@ use App\Http\Controllers\mojopanggung;
 use App\Http\Controllers\PenatabanController;
 use App\Http\Controllers\boyolanguController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\GrogolController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JambesariController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\User\UserGrogolController;
 use App\Http\Controllers\User\UserJambesariController;
 use App\Http\Controllers\User\UserKelgiriController;
 use App\Http\Controllers\User\UserMojopanggungController;
+use App\Http\Controllers\User\UserPenatabanController;
 use App\Models\warga;
 use Illuminate\Support\Facades\Route;
 
@@ -54,11 +57,38 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jets
 
         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 7)->count();
+        $warga = warga::count();
 
-
-        return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
+        return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban', 'warga'));
     })->name('admin.dashboard');
     Route::get('/laporan', [ExportController::class, 'export'])->name('kelurahan.export');
+});
+
+Route::group(['prefix' => 'Usergrogol', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:grogol']], function () {
+    Route::get('/dashboard', function () {
+        $mojopanggung = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 2)->count();
+
+        $Giri = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 3)->count();
+
+        $Boyolangu = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 4)->count();
+
+        $Grogol = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 5)->count();
+
+        $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 7)->count();
+
+        $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', 6)->count();
+
+        return view('user.grogol.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
+    })->name('grogol.dashboard');
+    Route::get('/view', [UserGrogolController::class, 'index'])->name('user_grogol.view');
+    Route::get('/add', [UserGrogolController::class, 'create'])->name('user_grogol.add');
+    Route::post('/store', [UserGrogolController::class, 'store'])->name('user_grogol.store');
 });
 
 Route::group(['prefix' => 'mojopanggung', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:mojopanggung']], function () {
@@ -90,8 +120,8 @@ Route::group(['prefix' => 'user_kelgiri', 'middleware' => ['auth:sanctum', confi
 
         $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 6)->count();
-
-        return view('user.kelgiri.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jambersari', 'penataban'));
+        $warga = warga::all()->count();
+        return view('user.kelgiri.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jambersari', 'penataban','warga'));
     })->name('kelgiri.dashboard');
     Route::get('/view', [UserKelgiriController::class, 'index'])->name('user_kelgiri.view');
     Route::get('/add', [UserKelgiriController::class, 'create'])->name('user_kelgiri.add');
@@ -118,8 +148,6 @@ Route::group(['prefix' => 'user_penataban', 'middleware' => ['auth:sanctum', con
 
         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 7)->count();
-
-
 
         return view('user.penataban.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
     })->name('penataban.dashboard');
@@ -148,6 +176,15 @@ Route::prefix('Penataban')->group(function () {
     Route::get('/delete/{id}', [PenatabanController::class, 'destroy'])->name('penataban.delete');
 });
 
+Route::prefix('grogol')->group(function () {
+    Route::get('/view', [GrogolController::class, 'index'])->name('grogol.view');
+    Route::get('/add', [GrogolController::class, 'create'])->name('grogol.add');
+    Route::post('/store', [GrogolController::class, 'store'])->name('grogol.store');
+    Route::get('/edit/{id}', [GrogolController::class, 'edit'])->name('grogol.edit');
+    Route::post('/update/{id}', [GrogolController::class, 'update'])->name('grogol.update');
+    Route::get('/delete/{id}', [GrogolController::class, 'destroy'])->name('grogol.delete');
+});
+
 Route::prefix('KelGiri')->group(function () {
     Route::get('/view', [KelGiri::class, 'index'])->name('kelgiri.view');
     Route::get('/add', [KelGiri::class, 'create'])->name('kelgiri.add');
@@ -173,14 +210,7 @@ Route::prefix('boyolangu')->group(function () {
     Route::post('/update/{id}', [boyolanguController::class, 'update'])->name('boyolangu.update');
     Route::get('/delete/{id}', [boyolanguController::class, 'destroy'])->name('users.delete');
 });
-Route::prefix('grogol')->group(function () {
-    Route::get('/view', [mojopanggung::class, 'index'])->name('grogol.view');
-    Route::get('/add', [mojopanggung::class, 'create'])->name('grogol.add');
-    Route::post('/store', [mojopanggung::class, 'store'])->name('grogol.store');
-    Route::get('/edit/{id}', [mojopanggung::class, 'edit'])->name('grogol.edit');
-    Route::post('/update/{id}', [mojopanggung::class, 'update'])->name('grogol.update');
-    Route::get('/delete/{id}', [mojopanggung::class, 'destroy'])->name('grogol.delete');
-});
+
 
 Route::prefix('jambesari')->group(function () {
     Route::get('/view', [JambesariController::class, 'index'])->name('jambesari.view');
