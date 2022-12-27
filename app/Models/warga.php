@@ -15,7 +15,7 @@ class warga extends Model
         'nama_warga',
         'alamat',
         'no_hp',
-        'kelurahan',
+        'id_kelurahan',
         'foto_ktp',
         'nik'
     ];

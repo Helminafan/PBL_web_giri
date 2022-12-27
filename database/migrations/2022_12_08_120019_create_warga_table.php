@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_warga');
             $table->string('alamat');
             $table->string('no_hp');
-            $table->string('foto_ktp');
+            $table->string('foto_ktp')->nullable();
             $table->unsignedBigInteger('id_kelurahan');
             $table->foreign('id_kelurahan')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();

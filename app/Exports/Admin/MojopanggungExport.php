@@ -19,7 +19,7 @@ class MojopanggungExport implements FromQuery, WithMapping, ShouldAutoSize, With
     use Exportable;
     public function query()
     {
-        return warga::query()->where('id_kelurahan', '=', '2');
+        return warga::query()->with('user')->where('id_kelurahan', '=', 2);
     }
     public function map($warga): array
     {
@@ -27,7 +27,7 @@ class MojopanggungExport implements FromQuery, WithMapping, ShouldAutoSize, With
             $warga->nik,
             $warga->nama_warga,
             $warga->alamat,
-            $warga->kelurahan,
+            $warga->user->name,
             $warga->no_hp
         ];
     }

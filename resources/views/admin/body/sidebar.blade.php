@@ -29,7 +29,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
 
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('kelgiri.view') }}">
+        <a class="nav-link" href="{{ route('giri.view') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>GIRI</span></a>
     </li>

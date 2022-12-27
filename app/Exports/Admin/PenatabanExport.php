@@ -18,7 +18,7 @@ class PenatabanExport implements FromQuery, WithMapping, ShouldAutoSize, WithTit
     use Exportable;
     public function query()
     {
-        return warga::query()->where('kelurahan', '=', 'Penataban');
+        return warga::query()->with('user')->where('id_kelurahan', '=', 6);
     }
     public function map($warga): array
     {
@@ -26,7 +26,7 @@ class PenatabanExport implements FromQuery, WithMapping, ShouldAutoSize, WithTit
             $warga->nik,
             $warga->nama_warga,
             $warga->alamat,
-            $warga->kelurahan,
+            $warga->user->name,
             $warga->no_hp
         ];
     }

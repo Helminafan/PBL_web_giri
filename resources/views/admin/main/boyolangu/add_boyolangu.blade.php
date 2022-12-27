@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-sm-6">
                             <label for="fotoktp">Foto KTP</label>
-                            <input type="file" class="form-control-file" required name="foto_ktp[]" id="fotoktp">
+                            <input type="file" class="form-control-file" accept="image/*" required name="foto_ktp[]" id="fotoktp">
                         </div>
                        
                     </div>

@@ -18,7 +18,7 @@ class JembersariExport implements FromQuery, WithMapping, ShouldAutoSize, WithTi
     use Exportable;
     public function query()
     {
-        return warga::query()->where('kelurahan', '=', 'Jembersari');
+        return warga::query()->with('user')->where('id_kelurahan', '=', 7);
     }
     public function map($warga): array
     {
@@ -26,7 +26,7 @@ class JembersariExport implements FromQuery, WithMapping, ShouldAutoSize, WithTi
             $warga->nik,
             $warga->nama_warga,
             $warga->alamat,
-            $warga->kelurahan,
+            $warga->user->name,
             $warga->no_hp
         ];
     }

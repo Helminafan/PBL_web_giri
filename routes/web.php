@@ -57,9 +57,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jets
 
         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 7)->count();
+        $warga = warga::count();
 
-
-        return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
+        return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban', 'warga'));
     })->name('admin.dashboard');
     Route::get('/laporan', [ExportController::class, 'export'])->name('kelurahan.export');
 });
@@ -120,8 +120,8 @@ Route::group(['prefix' => 'user_kelgiri', 'middleware' => ['auth:sanctum', confi
 
         $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 6)->count();
-
-        return view('user.kelgiri.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jambersari', 'penataban'));
+        $warga = warga::all()->count();
+        return view('user.kelgiri.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jambersari', 'penataban','warga'));
     })->name('kelgiri.dashboard');
     Route::get('/view', [UserKelgiriController::class, 'index'])->name('user_kelgiri.view');
     Route::get('/add', [UserKelgiriController::class, 'create'])->name('user_kelgiri.add');
@@ -148,8 +148,6 @@ Route::group(['prefix' => 'user_penataban', 'middleware' => ['auth:sanctum', con
 
         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 7)->count();
-
-
 
         return view('user.penataban.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban'));
     })->name('penataban.dashboard');

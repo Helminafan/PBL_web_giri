@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\warga;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,7 @@ class ApiMojopanggungController extends Controller
      */
     public function index()
     {
-        $data =warga::with('user')->where('id_kelurahan','=', 2);
+        $data = warga::where('id_kelurahan', Auth::user()->id)->get();
         return response()->json([
             'data' => $data,
         ], 200);
@@ -45,9 +46,9 @@ class ApiMojopanggungController extends Controller
         $data->alamat = $request->alamat;
         $data->no_hp = $request->no_hp;
         $data->foto_ktp = $request->foto_ktp;
-        $data->kelurahan = "mojopanggung";
+        $data->id_kelurahan = Auth::user()->id;
         $data->save();
-        return response()->json($data, 201);
+        return response()->json([$data, 201]);
     }
 
     /**

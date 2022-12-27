@@ -18,7 +18,7 @@ class GrogolExport implements FromQuery, WithMapping, ShouldAutoSize, WithTitle,
     use Exportable;
     public function query()
     {
-        return warga::query()->where('kelurahan', '=', 'Grogol');
+        return warga::query()->with('user')->where('id_kelurahan', '=', 5);
     }
     public function map($warga): array
     {
@@ -26,7 +26,7 @@ class GrogolExport implements FromQuery, WithMapping, ShouldAutoSize, WithTitle,
             $warga->nik,
             $warga->nama_warga,
             $warga->alamat,
-            $warga->kelurahan,
+            $warga->user->name,
             $warga->no_hp
         ];
     }

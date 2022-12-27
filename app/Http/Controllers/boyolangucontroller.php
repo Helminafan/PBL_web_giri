@@ -16,7 +16,7 @@ class boyolangucontroller extends Controller
      */
     public function index()
     {
-        $data = DB::table('warga')
+        $data = warga::with('user')
             ->where('id_kelurahan', '=', 4)
             ->get();
         return view('admin.main.boyolangu.view_boyolangu', compact('data'));
