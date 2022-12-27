@@ -71,7 +71,7 @@
       <div class="row justify-content-between">
         <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
           <div data-aos="zoom-out">
-            <h1>DATA WARGA MISKIN NON-DTKS WILAYAH <span>KECAMATAN GIRI</span></h1>
+            <h1>PENGINPUTAN DATA WARGA MISKIN NON-DTKS WILAYAH <span>KECAMATAN GIRI</span></h1>
             <div class="text-center text-lg-start">
               <a href="{{ route('login')}}" class="btn-get-started scrollto">Login</a>
               <a href="{{ route('register')}}" class="btn-get-started scrollto">Register</a>
@@ -119,7 +119,7 @@
           </div>
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column  justify-content-center align-items-stretch py-5 px-lg-5" data-aos="fade-left">
-            <h3>KANTOR LURAH GIRI</h3>
+            <h3>KANTOR KECAMATAN GIRI</h3>
             <p>Kelurahan Giri adalah salah satu wilayah penyangga Kota Banyuwangi. Wilayahnya berada di ketinggian 50-100 mdpl. Wilayahnya terdiri dari perkampungan dan perumahan warga serta lahan pertanian. Wilayah kelurahan ini dilewati beberapa jalan raya seperti Jalan Hayam Wuruk, Jalan Raden Wijaya dan Jalan MH Thamrin. Perkampungan warga terletak berdekatan dengan jalan raya dan di beberapa lingkungan seperti Lingkungan Payaman. Beberapa perumahan terletak berhubungan dengan Jalan MH Thamrin dan Jalan Raden Wijaya. Dan lahan pertanian terletak di belakang perkampungan, dekat perumahan dan ada satu lokasi persawahan di tepi Jalan Raden Wijaya.</p>
 
             <!-- <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
