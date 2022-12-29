@@ -25,12 +25,13 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123'),
+            'type'=>'admin',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
         $admin->assignRole($admin_role);
 
-        $mojopanggung_role = Role::create(['name' => 'mojopanggung']);
+        $user = Role::create(['name' => 'user']);
         $mojopanggung = User::create([
             'name' => 'Mojopanggung',
             'email' => 'mojopanggung@gmail.com',
@@ -38,9 +39,9 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-        $mojopanggung->assignRole($mojopanggung_role);
+        $mojopanggung->assignRole($user);
 
-        $kelgiri_role = Role::create(['name' => 'giri']);
+        
         $kelgiri = User::create([
             'name' => 'Giri',
             'email' => 'giri@gmail.com',
@@ -48,9 +49,9 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-        $kelgiri->assignRole($kelgiri_role);
+        $kelgiri->assignRole($user);
 
-        $boyolangu_role = Role::create(['name' => 'boyolangu']);
+       
         $boyolangu = User::create([
             'name' => 'Boyolangu',
             'email' => 'boyolangu@gmail.com',
@@ -58,9 +59,9 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-        $boyolangu->assignRole($boyolangu_role);
+        $boyolangu->assignRole($user);
 
-        $grogol_role = Role::create(['name' => 'grogol']);
+        
         $grogol = User::create([
             'name' => 'Grogol',
             'email' => 'grogol@gmail.com',
@@ -68,9 +69,9 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-        $grogol->assignRole($grogol_role);
+        $grogol->assignRole($user);
 
-        $penataban_role = Role::create(['name' => 'penataban']);
+        
         $penataban = User::create([
             'name' => 'Penataban',
             'email' => 'penataban@gmail.com',
@@ -78,9 +79,9 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-        $penataban->assignRole($penataban_role);
+        $penataban->assignRole($user);
 
-        $jambesari_role = Role::create(['name' => 'jambesari']);
+       
         $jambesari = User::create([
             'name' => 'Jambesari',
             'email' => 'jambesari@gmail.com',
@@ -88,6 +89,6 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-        $jambesari->assignRole($jambesari_role);
+        $jambesari->assignRole($user);
     }
 }
