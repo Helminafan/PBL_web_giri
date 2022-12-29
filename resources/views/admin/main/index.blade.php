@@ -12,7 +12,7 @@
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                <a href="{{route("kelurahan.export")}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                <a href="{{ route('kelurahan.export') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                         class="fas fa-download fa-sm text-white-50"></i> Download Data Warga</a>
             </div>
 
@@ -26,8 +26,8 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                       Jumlah Data Warga Miskin</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$warga}}</div>
+                                        Jumlah Data Warga Miskin</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $warga }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -44,8 +44,8 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                       Jumlah Kecamatan</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">6</div>
+                                        Jumlah Kecamatan</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $kelurahan }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-city fa-2x text-gray-300"></i>
@@ -61,11 +61,13 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data PerKecamatan
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data
+                                        PerKecamatan
                                     </div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$Giri}}</div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $Giri }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -348,28 +350,28 @@
         Chart.defaults.global.defaultFontColor = '#858796';
 
         function number_format(number, decimals, dec_point, thousands_sep) {
-          // *     example: number_format(1234.56, 2, ',', ' ');
-          // *     return: '1 234,56'
-          number = (number + '').replace(',', '').replace(' ', '');
-          var n = !isFinite(+number) ? 0 : +number,
-            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-            s = '',
-            toFixedFix = function(n, prec) {
-              var k = Math.pow(10, prec);
-              return '' + Math.round(n * k) / k;
-            };
-          // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-          s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-          if (s[0].length > 3) {
-            s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-          }
-          if ((s[1] || '').length < prec) {
-            s[1] = s[1] || '';
-            s[1] += new Array(prec - s[1].length + 1).join('0');
-          }
-          return s.join(dec);
+            // *     example: number_format(1234.56, 2, ',', ' ');
+            // *     return: '1 234,56'
+            number = (number + '').replace(',', '').replace(' ', '');
+            var n = !isFinite(+number) ? 0 : +number,
+                prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+                sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+                dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+                s = '',
+                toFixedFix = function(n, prec) {
+                    var k = Math.pow(10, prec);
+                    return '' + Math.round(n * k) / k;
+                };
+            // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+            s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+            if (s[0].length > 3) {
+                s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+            }
+            if ((s[1] || '').length < prec) {
+                s[1] = s[1] || '';
+                s[1] += new Array(prec - s[1].length + 1).join('0');
+            }
+            return s.join(dec);
         }
 
         // Bar Chart Example
@@ -422,7 +424,7 @@
                             padding: 10,
                             // Include a dollar sign in the ticks
                             callback: function(value, index, values) {
-                              return  number_format(value);
+                                return number_format(value);
                             }
                         },
                         gridLines: {

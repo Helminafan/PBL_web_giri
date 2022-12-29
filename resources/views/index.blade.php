@@ -79,7 +79,7 @@
           </div>
         </div>
         <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
-          <img src="{{asset('admin/assets/img/giri/giri2.jpeg')}}" class="img-fluid animated rounded" alt="">
+          <img src="{{asset('admin/assets/img/giri/camatgiri.png')}}" class="img-fluid animated rounded" alt="">
         </div>
       </div>
     </div>
@@ -119,8 +119,8 @@
           </div>
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column  justify-content-center align-items-stretch py-5 px-lg-5" data-aos="fade-left">
-            <h3>KANTOR LURAH GIRI</h3>
-            <p>Kelurahan Giri adalah salah satu wilayah penyangga Kota Banyuwangi. Wilayahnya berada di ketinggian 50-100 mdpl. Wilayahnya terdiri dari perkampungan dan perumahan warga serta lahan pertanian. Wilayah kelurahan ini dilewati beberapa jalan raya seperti Jalan Hayam Wuruk, Jalan Raden Wijaya dan Jalan MH Thamrin. Perkampungan warga terletak berdekatan dengan jalan raya dan di beberapa lingkungan seperti Lingkungan Payaman. Beberapa perumahan terletak berhubungan dengan Jalan MH Thamrin dan Jalan Raden Wijaya. Dan lahan pertanian terletak di belakang perkampungan, dekat perumahan dan ada satu lokasi persawahan di tepi Jalan Raden Wijaya.</p>
+            <h3>KANTOR CAMAT GIRI</h3>
+            <p>Kecamatan Giri adalah salah satu wilayah penyangga Kota Banyuwangi. Wilayahnya berada di ketinggian 50-100 mdpl. Wilayahnya terdiri dari perkampungan dan perumahan warga serta lahan pertanian. Wilayah Kecamatan ini dilewati beberapa jalan raya seperti Jalan Hayam Wuruk, Jalan Raden Wijaya dan Jalan MH Thamrin. Perkampungan warga terletak berdekatan dengan jalan raya dan di beberapa lingkungan seperti Lingkungan Payaman. Beberapa perumahan terletak berhubungan dengan Jalan MH Thamrin dan Jalan Raden Wijaya. Dan lahan pertanian terletak di belakang perkampungan, dekat perumahan dan ada satu lokasi persawahan di tepi Jalan Raden Wijaya.</p>
 
             <!-- <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
               <div class="icon"><i class="bx bx-fingerprint"></i></div>
@@ -286,7 +286,7 @@
 
         <div class="row content">
           <div class="col-md-4 d-flex align-items-center" data-aos="fade-right">
-            <img src="admin/assets/img/giri/giri2.jpeg" class="img-fluid" alt="">
+            <img src="admin/assets/img/giri/camatgiri2.png" class="img-fluid" alt="">
           </div>
           <div class="col-md-8 pt-4" data-aos="fade-up">
             <h3>Kecamatan Giri</h3>

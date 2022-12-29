@@ -10,8 +10,10 @@ use App\Http\Controllers\ExportController;
 use App\Http\Controllers\GrogolController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JambesariController;
+use App\Http\Controllers\TambahUserController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\User\UserKelDesController;
+use App\Models\User;
 use App\Models\warga;
 use Illuminate\Support\Facades\Route;
 
@@ -54,10 +56,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jets
         $Jembersari = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 7)->count();
         $warga = warga::count();
-
-        return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban', 'warga'));
+        $kelurahan = User::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('type', '=', 'user');
+        return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban', 'warga', 'kelurahan'));
     })->name('admin.dashboard');
     Route::get('/laporan', [ExportController::class, 'export'])->name('kelurahan.export');
+    Route::get('tambahUser',[TambahUserController::class, 'index'])->name('user.view');
+    Route::get('addUser',[TambahUserController::class, 'create'])->name('user.add');
+    Route::post('storeUser',[TambahUserController::class, 'store'])->name('user.store');
 });
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'role:user']], function () {
@@ -79,8 +85,16 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth:sanctum', config('jetst
 
         $penataban = warga::select(DB::raw("COUNT(*) as jumlah"))
             ->where('id_kelurahan', '=', 6)->count();
+
         $warga = warga::all()->count();
-        return view('user.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban','warga'));
+
+        $wargaKelurahan = warga::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('id_kelurahan', '=', Auth::user()->id)->count();
+
+        $kelurahan = User::select(DB::raw("COUNT(*) as jumlah"))
+        ->where('type', '=', 'user')->count();
+
+        return view('user.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban','warga','wargaKelurahan', 'kelurahan'));
     })->name('kelgiri.dashboard');
     Route::get('/view', [UserKelDesController::class, 'index'])->name('user_kelgiri.view');
     Route::get('/add', [UserKelDesController::class, 'create'])->name('user_kelgiri.add');

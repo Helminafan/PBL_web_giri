@@ -66,6 +66,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Mojopanggung</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('user.view') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>tambah Kelurahan/Desa</span></a>
+    </li>
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
