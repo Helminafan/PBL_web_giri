@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bootslander Bootstrap Template - Index</title>
+  <title>Kecamatan Giri</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -54,9 +54,9 @@
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <!-- <li><a class="nav-link scrollto" href="#features">Features</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li> -->
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          {{-- <li><a class="nav-link scrollto" href="#team">Team</a></li> --}}
           <!-- <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li> -->
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          {{-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> --}}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -74,7 +74,7 @@
             <h1>DATA WARGA MISKIN NON-DTKS WILAYAH <span>KECAMATAN GIRI</span></h1>
             <div class="text-center text-lg-start">
               <a href="{{ route('login')}}" class="btn-get-started scrollto">Login</a>
-              <a href="{{ route('register')}}" class="btn-get-started scrollto">Register</a>
+              {{-- <a href="{{ route('register')}}" class="btn-get-started scrollto">Register</a> --}}
             </div>
           </div>
         </div>
@@ -294,10 +294,12 @@
           
             </p>
             <ul>
-              <li><i class="bi bi-check"></i> Kecamatan Giri</li>
-              <li><i class="bi bi-check"></i> </li>
-              <li><i class="bi bi-check"></i> </li>
-              <li><i class="bi bi-check"></i> </li>
+              <li><i class="bi bi-check"></i> Kelurahan Giri</li>
+              <li><i class="bi bi-check"></i> Kelurahan Jambersari </li>
+              <li><i class="bi bi-check"></i> Kelurahan Mojopanggung</li>
+              <li><i class="bi bi-check"></i> Kelurahan Boyolangu</li>
+              <li><i class="bi bi-check"></i> Kelurahan Penataban</li>
+              <li><i class="bi bi-check"></i> Kelurahan Grogol</li>
             </ul>
             <p>
              
@@ -474,7 +476,7 @@
     <!-- End Testimonials Section -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
+    {{-- <section id="team" class="team">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
@@ -581,7 +583,7 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section><!-- End Team Section --> --}}
 
     <!-- ======= Pricing Section ======= -->
     <!-- <section id="pricing" class="pricing">
@@ -670,7 +672,7 @@
     <!-- End Pricing Section -->
 
 
-    <section id="contact" class="contact">
+    {{-- <section id="contact" class="contact">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
@@ -734,19 +736,19 @@
         </div>
 
       </div>
-    </section><!-- End Contact Section -->
+    </section><!-- End Contact Section --> --}}
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  {{-- <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
 
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
-              <h3>Bootslander</h3>
+              <h3>Kecamatan Giri</h3>
               <p class="pb-3"><em>Qui repudiandae et eum dolores alias sed ea. Qui suscipit veniam excepturi quod.</em></p>
               <p>
                 A108 Adam Street <br>
@@ -811,7 +813,7 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer><!-- End Footer --> --}}
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
