@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bootslander Bootstrap Template - Index</title>
+  <title>Web Penginputan Data Warga Kecamatan Giri</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -74,12 +74,12 @@
             <h1>PENGINPUTAN DATA WARGA MISKIN NON-DTKS WILAYAH <span>KECAMATAN GIRI</span></h1>
             <div class="text-center text-lg-start">
               <a href="{{ route('login')}}" class="btn-get-started scrollto">Login</a>
-              <a href="{{ route('register')}}" class="btn-get-started scrollto">Register</a>
+              {{-- <a href="{{ route('register')}}" class="btn-get-started scrollto">Register</a> --}}
             </div>
           </div>
         </div>
-        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
-          <img src="{{asset('admin/assets/img/giri/giri2.jpeg')}}" class="img-fluid animated rounded" alt="">
+        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="500">
+          <img src="{{asset('admin/assets/img/giri/camatgiri.png')}}" class="img-fluid animated rounded" alt="">
         </div>
       </div>
     </div>
@@ -108,19 +108,19 @@
       <div class="container-fluid">
         <div class="container">
           <div class="section-title" data-aos="fade-up">
-          <h2>About</h2>
-          <p>About</p>
+          {{-- <h2>About</h2> --}}
+          <p>Tentang</p>
         </div>
          <div class="row">
            
           <div class="col-xl-5 col-lg-6 d-flex justify-content-center align-items-center" data-aos="fade-right">
            
-           <img src="admin/assets/img/giri/giri2.jpeg" class="img-fluid animated rounded" alt="">
+           <img src="admin/assets/img/giri/camatgiri2.png" class="img-fluid animated rounded" alt="">
           </div>
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column  justify-content-center align-items-stretch py-5 px-lg-5" data-aos="fade-left">
             <h3>KANTOR KECAMATAN GIRI</h3>
-            <p>Kelurahan Giri adalah salah satu wilayah penyangga Kota Banyuwangi. Wilayahnya berada di ketinggian 50-100 mdpl. Wilayahnya terdiri dari perkampungan dan perumahan warga serta lahan pertanian. Wilayah kelurahan ini dilewati beberapa jalan raya seperti Jalan Hayam Wuruk, Jalan Raden Wijaya dan Jalan MH Thamrin. Perkampungan warga terletak berdekatan dengan jalan raya dan di beberapa lingkungan seperti Lingkungan Payaman. Beberapa perumahan terletak berhubungan dengan Jalan MH Thamrin dan Jalan Raden Wijaya. Dan lahan pertanian terletak di belakang perkampungan, dekat perumahan dan ada satu lokasi persawahan di tepi Jalan Raden Wijaya.</p>
+            <p>Kecamatan Giri adalah salah satu wilayah penyangga Kota Banyuwangi. Wilayahnya berada di ketinggian 50-100 mdpl. Wilayahnya terdiri dari perkampungan dan perumahan warga serta lahan pertanian. Wilayah kelurahan ini dilewati beberapa jalan raya seperti Jalan Hayam Wuruk, Jalan Raden Wijaya dan Jalan MH Thamrin. Perkampungan warga terletak berdekatan dengan jalan raya dan di beberapa lingkungan seperti Lingkungan Payaman. Beberapa perumahan terletak berhubungan dengan Jalan MH Thamrin dan Jalan Raden Wijaya. Dan lahan pertanian terletak di belakang perkampungan, dekat perumahan dan ada satu lokasi persawahan di tepi Jalan Raden Wijaya.</p>
 
             <!-- <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
               <div class="icon"><i class="bx bx-fingerprint"></i></div>

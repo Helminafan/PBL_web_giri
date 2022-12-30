@@ -5,7 +5,7 @@ $(".add-more").on("click", function () {
         '<div class="form-group row">' +
         '<div class="col-sm-6 mb-3 mb-sm-0">' +
         '<label for="nik">No KK</label>' +
-        '<input type="text" minlength="16"  maxlength="16"  required class="form-control  form-control-lg"  id="nik" placeholder="NIK" name="nik[]">' +
+        '<input type="text" minlength="16"  maxlength="16"  required class="form-control  form-control-lg"  id="nik" placeholder="No KK" name="nik[]">' +
         "</div>" +
         '<div class="col-sm-6 mb-3 mb-sm-0">' +
         '<label for="Name">Nama Lengkap</label>' +
