@@ -15,8 +15,12 @@ class warga extends Model
         'nama_warga',
         'alamat',
         'no_hp',
-        'kelurahan',
+        'id_kelurahan',
         'foto_ktp',
         'nik'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_kelurahan', 'id');
+    }
 }

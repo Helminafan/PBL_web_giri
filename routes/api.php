@@ -4,11 +4,13 @@ use App\Http\Controllers\API\api_kecamatancontroller;
 use App\Http\Controllers\API\ApiGiriController;
 use App\Http\Controllers\API\ApiMojopanggungController;
 use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\DataWargaController;
 use App\Http\Controllers\API\kewargaancontroller;
 use App\Http\Controllers\API\PengumumanController;
 use App\Http\Controllers\API\SuratController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\jenissuratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -29,18 +31,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/edit_mojopanggung/{id}', [ApiMojopanggungController::class, 'edit']);
     Route::put('/update_mojopanggung/{id}', [ApiMojopanggungController::class, 'update']);
     Route::get('/view_mojopanggung', [ApiMojopanggungController::class, 'index']);
-    Route::put('/update_pengumuman/{id}', [PengumumanController::class, 'update']);
-    Route::delete('/delete_pengumuman/{id}', [PengumumanController::class, 'destroy']);
+    Route::get('/dataPenduduk', [DataWargaController::class, 'index']);
 });
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 
 //Api
-Route::group(['prefix' => 'sur'], function () {
-    Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('/surat', [SuratController::class, 'index']);
-    Route::post('surat/add', [SuratController::class, 'add']);
-    Route::post('surat/update',[SuratController::class, 'update']);
-    Route::post('surat/delete',[SuratController::class, 'delete']);
-    });
-});
+

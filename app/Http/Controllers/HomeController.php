@@ -10,13 +10,11 @@ class HomeController extends Controller
 {
     public function redirectUser()
     {
-        if (auth()->user()->hasRole('mojopanggung')) {
-            return redirect()->route('mojopanggung.dashboard');
-        }
         if (auth()->user()->hasRole('admin')) {
             return redirect()->route('admin.dashboard');
         }
-        if (auth()->user()->hasRole('kelgiri')) {
+
+        if (auth()->user()->hasRole('user')) {
             return redirect()->route('kelgiri.dashboard');
         }
     }

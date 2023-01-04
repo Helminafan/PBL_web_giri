@@ -15,7 +15,7 @@ class GiriController extends Controller
     public function index()
     {
         $data = warga::all();
-        return view("admin.main.kel_giri.view_kelgiri", compact('data'));
+        return view("admin.main.tabel", compact('data'));
     }
 
     /**

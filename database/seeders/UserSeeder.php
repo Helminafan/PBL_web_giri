@@ -22,32 +22,73 @@ class UserSeeder extends Seeder
     {
         $admin_role = Role::create(['name' => 'admin']);
         $admin = User::create([
-            'name' => 'admin',
+            'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123'),
+            'type'=>'admin',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
         $admin->assignRole($admin_role);
 
-        $mojopanggung_role = Role::create(['name' => 'mojopanggung']);
+        $user = Role::create(['name' => 'user']);
         $mojopanggung = User::create([
-            'name' => 'mojopanggung',
+            'name' => 'Mojopanggung',
             'email' => 'mojopanggung@gmail.com',
             'password' => bcrypt('mojopanggung123'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-        ]); 
-        $mojopanggung->assignRole($mojopanggung_role);
+        ]);
+        $mojopanggung->assignRole($user);
 
-        $kelgiri_role = Role::create(['name' => 'kelgiri']);
+        
         $kelgiri = User::create([
-            'name' => 'kelgiri',
-            'email' => 'kelgiri@gmail.com',
-            'password' => bcrypt('kelgiri123'),
+            'name' => 'Giri',
+            'email' => 'giri@gmail.com',
+            'password' => bcrypt('giri123'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-        $kelgiri->assignRole($kelgiri_role);
+        $kelgiri->assignRole($user);
+
+       
+        $boyolangu = User::create([
+            'name' => 'Boyolangu',
+            'email' => 'boyolangu@gmail.com',
+            'password' => bcrypt('boyolangu123'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        $boyolangu->assignRole($user);
+
+        
+        $grogol = User::create([
+            'name' => 'Grogol',
+            'email' => 'grogol@gmail.com',
+            'password' => bcrypt('grogol123'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        $grogol->assignRole($user);
+
+        
+        $penataban = User::create([
+            'name' => 'Penataban',
+            'email' => 'penataban@gmail.com',
+            'password' => bcrypt('penataban123'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        $penataban->assignRole($user);
+
+       
+        $jambesari = User::create([
+            'name' => 'Jambesari',
+            'email' => 'jambesari@gmail.com',
+            'password' => bcrypt('jambesari123'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        $jambesari->assignRole($user);
     }
 }
