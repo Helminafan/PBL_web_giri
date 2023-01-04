@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123'),
-            'type'=>'admin',
+            'type' => 'admin',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
         ]);
         $mojopanggung->assignRole($user);
 
-        
+
         $kelgiri = User::create([
             'name' => 'Giri',
             'email' => 'giri@gmail.com',
@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
         ]);
         $kelgiri->assignRole($user);
 
-       
+
         $boyolangu = User::create([
             'name' => 'Boyolangu',
             'email' => 'boyolangu@gmail.com',
@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
         ]);
         $boyolangu->assignRole($user);
 
-        
+
         $grogol = User::create([
             'name' => 'Grogol',
             'email' => 'grogol@gmail.com',
@@ -71,7 +71,7 @@ class UserSeeder extends Seeder
         ]);
         $grogol->assignRole($user);
 
-        
+
         $penataban = User::create([
             'name' => 'Penataban',
             'email' => 'penataban@gmail.com',
@@ -81,7 +81,7 @@ class UserSeeder extends Seeder
         ]);
         $penataban->assignRole($user);
 
-       
+
         $jambesari = User::create([
             'name' => 'Jambesari',
             'email' => 'jambesari@gmail.com',

@@ -2,13 +2,13 @@
 @section('user')
     <div class="container-fluid">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tabel Kelurahan Giri</h1>
+        <h1 class="h3 mb-2 text-gray-800">Tabel Data Warga Miskin </h1>
         <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <div class="row d-flex justify-content-between">
                             <div class="col mt-2">
-                                <h6 class="m-0 font-weight-bold text-primary">Data Warga Kel. Giri</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Data Warga Kel. {{ Auth::user()->name }}</h6>
                             </div>
                             <div class="co">
                                 <a href="{{ route('user_kelgiri.add') }}"><button class="btn btn-primary"> Tambah Data

@@ -57,7 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', config('jets
             ->where('id_kelurahan', '=', 7)->count();
         $warga = warga::count();
         $kelurahan = User::select(DB::raw("COUNT(*) as jumlah"))
-        ->where('type', '=', 'user');
+        ->where('type', '=', 'user')->count();
         return view('admin.main.index', compact('mojopanggung', 'Giri', 'Boyolangu', 'Grogol', 'Jembersari', 'penataban', 'warga', 'kelurahan'));
     })->name('admin.dashboard');
     Route::get('/laporan', [ExportController::class, 'export'])->name('kelurahan.export');
