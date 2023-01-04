@@ -43,19 +43,12 @@ class AuthController extends Controller
                 'error' => 'login gagal. Cek lagi detail login'
             ], 401);
         }
-
         $user = $request->user();
-
-        $tokenResult = $user->createToken('AccessToken');
-        $token = $tokenResult->token;
-        $token->save();
-
+        $token= $user->createToken("auth_token")->plainTextToken;
+        $user->token = $token;
+        $user->tokenType = 'Bearer';
         return response()->json([
-            'access_token' => $tokenResult->accessToken,
-            'token_id' => $token->id,
-            'user_id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
+            'data'         => $user,
         ], 200);
     }
 }

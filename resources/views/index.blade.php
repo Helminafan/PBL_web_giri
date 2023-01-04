@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bootslander Bootstrap Template - Index</title>
+  <title>Kecamatan Giri</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -51,12 +51,12 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Download app</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
           <!-- <li><a class="nav-link scrollto" href="#features">Features</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li> -->
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          {{-- <li><a class="nav-link scrollto" href="#team">Team</a></li> --}}
           <!-- <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li> -->
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          {{-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> --}}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -71,16 +71,15 @@
       <div class="row justify-content-between">
         <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
           <div data-aos="zoom-out">
-            <h4>Selamat Datang</h4>
             <h1>DATA WARGA MISKIN NON-DTKS WILAYAH <span>KECAMATAN GIRI</span></h1>
             <div class="text-center text-lg-start">
               <a href="{{ route('login')}}" class="btn-get-started scrollto">Login</a>
-              <a href="{{ route('register')}}" class="btn-get-started scrollto">Register</a>
+              {{-- <a href="{{ route('register')}}" class="btn-get-started scrollto">Register</a> --}}
             </div>
           </div>
         </div>
         <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
-          <img src="{{asset('admin/assets/img/giri/giri2.jpeg')}}" class="img-fluid animated rounded" alt="">
+          <img src="{{asset('admin/assets/img/giri/camatgiri.png')}}" class="img-fluid animated rounded" alt="">
         </div>
       </div>
     </div>
@@ -120,8 +119,8 @@
           </div>
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column  justify-content-center align-items-stretch py-5 px-lg-5" data-aos="fade-left">
-            <h3>KANTOR LURAH GIRI</h3>
-            <p>Kelurahan Giri adalah salah satu wilayah penyangga Kota Banyuwangi. Wilayahnya berada di ketinggian 50-100 mdpl. Wilayahnya terdiri dari perkampungan dan perumahan warga serta lahan pertanian. Wilayah kelurahan ini dilewati beberapa jalan raya seperti Jalan Hayam Wuruk, Jalan Raden Wijaya dan Jalan MH Thamrin. Perkampungan warga terletak berdekatan dengan jalan raya dan di beberapa lingkungan seperti Lingkungan Payaman. Beberapa perumahan terletak berhubungan dengan Jalan MH Thamrin dan Jalan Raden Wijaya. Dan lahan pertanian terletak di belakang perkampungan, dekat perumahan dan ada satu lokasi persawahan di tepi Jalan Raden Wijaya.</p>
+            <h3>KANTOR CAMAT GIRI</h3>
+            <p>Kecamatan Giri adalah salah satu wilayah penyangga Kota Banyuwangi. Wilayahnya berada di ketinggian 50-100 mdpl. Wilayahnya terdiri dari perkampungan dan perumahan warga serta lahan pertanian. Wilayah Kecamatan ini dilewati beberapa jalan raya seperti Jalan Hayam Wuruk, Jalan Raden Wijaya dan Jalan MH Thamrin. Perkampungan warga terletak berdekatan dengan jalan raya dan di beberapa lingkungan seperti Lingkungan Payaman. Beberapa perumahan terletak berhubungan dengan Jalan MH Thamrin dan Jalan Raden Wijaya. Dan lahan pertanian terletak di belakang perkampungan, dekat perumahan dan ada satu lokasi persawahan di tepi Jalan Raden Wijaya.</p>
 
             <!-- <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
               <div class="icon"><i class="bx bx-fingerprint"></i></div>
@@ -287,7 +286,7 @@
 
         <div class="row content">
           <div class="col-md-4 d-flex align-items-center" data-aos="fade-right">
-            <img src="admin/assets/img/giri/giri2.jpeg" class="img-fluid" alt="">
+            <img src="admin/assets/img/giri/camatgiri2.png" class="img-fluid" alt="">
           </div>
           <div class="col-md-8 pt-4" data-aos="fade-up">
             <h3>Kecamatan Giri</h3>
@@ -295,10 +294,12 @@
           
             </p>
             <ul>
-              <li><i class="bi bi-check"></i> Kecamatan Giri</li>
-              <li><i class="bi bi-check"></i> </li>
-              <li><i class="bi bi-check"></i> </li>
-              <li><i class="bi bi-check"></i> </li>
+              <li><i class="bi bi-check"></i> Kelurahan Giri</li>
+              <li><i class="bi bi-check"></i> Kelurahan Jambersari </li>
+              <li><i class="bi bi-check"></i> Kelurahan Mojopanggung</li>
+              <li><i class="bi bi-check"></i> Kelurahan Boyolangu</li>
+              <li><i class="bi bi-check"></i> Kelurahan Penataban</li>
+              <li><i class="bi bi-check"></i> Kelurahan Grogol</li>
             </ul>
             <p>
              
@@ -475,7 +476,7 @@
     <!-- End Testimonials Section -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
+    {{-- <section id="team" class="team">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
@@ -582,7 +583,7 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section><!-- End Team Section --> --}}
 
     <!-- ======= Pricing Section ======= -->
     <!-- <section id="pricing" class="pricing">
@@ -629,41 +630,6 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="zoom-in" data-aos-delay="300">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="zoom-in" data-aos-delay="400">
-              <span class="advanced">Advanced</span>
-              <h3>Ultimate</h3>
-              <h4><sup>$</sup>49<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </div>
@@ -671,7 +637,7 @@
     <!-- End Pricing Section -->
 
 
-    <section id="contact" class="contact">
+    {{-- <section id="contact" class="contact">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
@@ -735,19 +701,19 @@
         </div>
 
       </div>
-    </section><!-- End Contact Section -->
+    </section><!-- End Contact Section --> --}}
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  {{-- <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
 
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
-              <h3>Bootslander</h3>
+              <h3>Kecamatan Giri</h3>
               <p class="pb-3"><em>Qui repudiandae et eum dolores alias sed ea. Qui suscipit veniam excepturi quod.</em></p>
               <p>
                 A108 Adam Street <br>
@@ -812,7 +778,7 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer><!-- End Footer --> --}}
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
