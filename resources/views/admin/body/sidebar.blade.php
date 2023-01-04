@@ -49,7 +49,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('boyolangu.view') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Desa.Boyolangu</span></a>
+            <span>Kel.Boyolangu</span></a>
     </li>
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('grogol.view') }}">
@@ -59,7 +59,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{route('jambesari.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kel.Jambersari</span></a>
+            <span>Desa.Jambersari</span></a>
     </li>
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('mojopanggung.view') }}">
