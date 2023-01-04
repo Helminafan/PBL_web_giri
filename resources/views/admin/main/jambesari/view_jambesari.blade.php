@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Table Kelurahan Giri</h1>
+        <h1 class="h3 mb-2 text-gray-800">Table Kelurahan Jambesari</h1>
         <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -12,7 +12,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Data Warga Kel Giri</h6>
                             </div>
                             <div class="co">
-                                <a href="{{ route('kelgiri.add') }}"><button class="btn btn-primary"> Tambah Data
+                                <a href="{{ route('jambesari.add') }}"><button class="btn btn-primary"> Tambah Data
                                     </button></a>
                             </div>
                         </div>
@@ -43,8 +43,8 @@
                                             <td>{{ $row->no_hp }}</td>
                                             <td>{{ $row->created_at }}</td>
                                             <td>
-                                                <a href="{{route('kelgiri.edit', $row->id)}}" class="btn btn-warning"> Edit </a>
-                                                <a href="{{route('kelgiri.delete', $row->id)}}" id="delete"><button type="button"
+                                                <a href="{{route('jambesari.edit', $row->id)}}" class="btn btn-warning"> Edit </a>
+                                                <a href="{{route('jambesari.delete', $row->id)}}" id="delete"><button type="button"
                                                         class="btn btn-danger delete">Hapus</button></a>
                                             </td>
                                         </tr>

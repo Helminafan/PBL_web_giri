@@ -1,5 +1,5 @@
-@extends('admin.master.master')
-@section('content')
+@extends('user.master.master')
+@section('user')
     <div class="container-fluid">
         <h1 class="h3 mb-2 text-gray-800">Tambah Data Warga Miskin Kelurahan Giri</h1>
         <div class="row d-flex justify-content-between">
@@ -8,8 +8,7 @@
             </div>
             <div class="co"><button class="btn btn-success add-more"> Tambah Data </button></div>
         </div>
-        <form id="validate" class="user" method="POST" autocomplete="off" action="{{ route('kelgiri.store') }}"
-            enctype="multipart/form-data">
+        <form id="validate" class="user" method="POST" autocomplete="off" action="{{route('user_kelgiri.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="add-more-data">
                 <div class="card shadow mb-4">
@@ -18,7 +17,7 @@
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="nik">No KK</label>
                                 <input type="text" required class="form-control nik form-control-lg" id="nik"
-                                    placeholder="No KK" minlength="16" maxlength="16" name="nik[]">
+                                    placeholder="No KK" minlength="16"  maxlength="16" name="nik[]"  >
                                 <br>
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -29,8 +28,7 @@
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="Alamat">Alamat</label>
-                                <input type="text" required class="form-control form-control-lg"
-                                    id="alamat"placeholder="Alamat" name="alamat[]">
+                                <input type="text" required class="form-control form-control-lg" id="alamat"placeholder="Alamat" name="alamat[]">
                                 <br>
                             </div>
                             <div class="col-sm-6">
@@ -40,7 +38,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="fotoktp">Foto KTP</label>
-                                <input type="file" accept="image/*" class="form-control-file" required name="foto_ktp[]" id="fotoktp">
+                                <input type="file" class="form-control-file" required name="foto_ktp[]" id="fotoktp">
                             </div>
                         </div>
                     </div>
@@ -60,26 +58,22 @@
 @push('js')
     <script src="{{ asset('admin/tambahdata/scriptTambah.js') }}"></script>
     <script type="text/javascript">
-        $('#validate').validate({
+    $('#validate').validate({
             rules: {
                 'nik[]': {
                     required: true,
-                    number: true,
-                    minlength: 16,
-                  
                 },
                 'nama_warga[]': {
-                    required: true,
+                    required:true,
                 },
                 'alamat[]': {
-                    required: true,
+                    required:true,
                 },
                 'no_hp[]': {
-                    required: true,
-                    number: true,
+                    required:true,
                 },
                 'foto_ktp[]': {
-                    required: true,
+                    required:true,
                 },
             },
             messages: {

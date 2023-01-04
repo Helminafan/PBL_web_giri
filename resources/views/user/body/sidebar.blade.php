@@ -1,11 +1,11 @@
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
+        {{-- <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text" style="font-size: 12px">DATA WARGA MISKIN NON-DTKS WILAYAH KECAMATAN GIRI</div>
+        </div> --}}
+        <div class="sidebar-brand-text mx-3">Kelurahan {{Auth::user()->name}}</div>
     </a>
 
     <!-- Divider -->
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+        <a class="nav-link" href="{{route('dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -28,8 +28,8 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
 
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('giri.view') }}">
+    {{-- <li class="nav-item active">
+        <a class="nav-link" href="{{route('kelgiri.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>GIRI</span></a>
     </li>
@@ -37,40 +37,35 @@
     <hr class="sidebar-divider d-none d-md-block">
 
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('penataban.view') }}">
+        <a class="nav-link" href="{{route('penataban.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Penataban</span></a>
-    </li>
+    </li> --}}
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('kelgiri.view') }}">
+        <a class="nav-link" href="{{route('user_kelgiri.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kel.Giri</span></a>
+            <span>Kel.{{Auth::user()->name}}</span></a>
     </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('boyolangu.view') }}">
+    {{--<li class="nav-item active">
+        <a class="nav-link" href="{{route('boyolangu.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kel.Boyolangu</span></a>
+            <span>Desa.Boyolangu</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('grogol.view') }}">
+        <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Desa.Grogol</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="{{route('jambesari.view')}}">
+        <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Desa.Jambersari</span></a>
+            <span>Kel.Jambersari</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('mojopanggung.view') }}">
+        <a class="nav-link" href="{{route('mojopanggung.view')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kel.Mojopanggung</span></a>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('user.view') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>tambah Kelurahan/Desa</span></a>
-    </li>
+    </li> --}}
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">

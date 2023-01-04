@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\warga;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class GiriController extends Controller
+class TambahUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class GiriController extends Controller
      */
     public function index()
     {
-        $data = warga::all();
-        return view("admin.main.tabel", compact('data'));
+        $user = User::all()->where('type','=','user');
+        return view('admin.main.tambahUser.view_user',compact('user'));
     }
 
     /**
@@ -25,8 +25,7 @@ class GiriController extends Controller
      */
     public function create()
     {
-        // dd('Berhasil');
-        return view('admin.main.kel_giri.add_kelgiri');
+        return view('admin.main.tambahUser.add_user');
     }
 
     /**
@@ -37,7 +36,13 @@ class GiriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new User();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = bcrypt($request->password);
+        $data->assignRole('user');
+        $data->save();
+        return redirect()->route('user.view')->with('Success', 'tambah berhasil');
     }
 
     /**

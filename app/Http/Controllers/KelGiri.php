@@ -17,7 +17,7 @@ class KelGiri extends Controller
      */
     public function index()
     {
-        $data = DB::table('warga')
+        $data = warga::with('user')
             ->where('id_kelurahan', '=', 3)
             ->get();
         return view('admin.main.kel_giri.view_kelgiri', compact('data'));

@@ -1,7 +1,6 @@
-@extends('admin.master.master')
-@section('content')
+@extends('user.master.master')
+@section('user')
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Table Kelurahan Giri</h1>
         <p class="mb-4">Data warga miskin <a target="_blank" <!-- DataTales Example -->
@@ -9,10 +8,10 @@
                     <div class="card-header py-3">
                         <div class="row d-flex justify-content-between">
                             <div class="col mt-2">
-                                <h6 class="m-0 font-weight-bold text-primary">Data Warga Kel Giri</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Data Warga Kel. Giri</h6>
                             </div>
                             <div class="co">
-                                <a href="{{ route('kelgiri.add') }}"><button class="btn btn-primary"> Tambah Data
+                                <a href="{{ route('user_kelgiri.add') }}"><button class="btn btn-primary"> Tambah Data
                                     </button></a>
                             </div>
                         </div>
@@ -43,8 +42,8 @@
                                             <td>{{ $row->no_hp }}</td>
                                             <td>{{ $row->created_at }}</td>
                                             <td>
-                                                <a href="{{route('kelgiri.edit', $row->id)}}" class="btn btn-warning"> Edit </a>
-                                                <a href="{{route('kelgiri.delete', $row->id)}}" id="delete"><button type="button"
+                                                <a href="#" class="btn btn-warning"> Edit </a>
+                                                <a href="#" id="delete"><button type="button"
                                                         class="btn btn-danger delete">Hapus</button></a>
                                             </td>
                                         </tr>

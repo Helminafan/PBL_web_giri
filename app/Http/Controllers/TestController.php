@@ -12,6 +12,7 @@ class TestController extends Controller
     {
         $mojopanngung = warga::select(DB::raw("COUNT(*) as jumlah"))
         ->where('kelurahan', '=', 'Giri')->count();
+        
         dd($mojopanngung);
         return view('test', compact('$mojopanggung'));
     }

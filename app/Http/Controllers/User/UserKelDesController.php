@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\warga;
+use Auth;
 use DB;
-use File;
 use Illuminate\Http\Request;
 
-class GrogolController extends Controller
+class UserKelDesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,9 @@ class GrogolController extends Controller
     public function index()
     {
         $data = warga::with('user')
-            ->where('id_kelurahan', '=', 5)
+            ->where('id_kelurahan', Auth::user()->id)
             ->get();
-        return view('admin.main.grogol.view_grogol', compact('data'));
+        return view('user.main.view_kelgiri', compact('data'));
     }
 
     /**
@@ -29,7 +30,10 @@ class GrogolController extends Controller
      */
     public function create()
     {
-        return view('admin.main.grogol.add_grogol');
+        $data = warga::with('user')
+            ->where('id_kelurahan', Auth::user()->id)
+            ->get();
+        return view('user.main.add_kelgiri', compact('data'));
     }
 
     /**
@@ -52,10 +56,12 @@ class GrogolController extends Controller
                 $request->file('foto_ktp')[$key]->move('fotoPetugas/', $newbaru);
             }
             $data['foto_ktp'] = $newbaru;
-            $data->id_kelurahan = 5;
+            $data->id_kelurahan = Auth::user()->id;
             $data->save();
         }
-        return redirect()->route('grogol.view')->with('success', 'Data Berhasil Ditambah');
+
+
+        return redirect()->route('user_kelgiri.view')->with('success', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -77,8 +83,7 @@ class GrogolController extends Controller
      */
     public function edit($id)
     {
-        $dataWarga = warga::find($id);
-        return view('admin.main.grogol.edit_grogol', compact('dataWarga'));
+        //
     }
 
     /**
@@ -90,19 +95,7 @@ class GrogolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dataWarga = warga::find($id);
-        if ($request->hasFile('foto_ktp')) {
-            if (File::exists('fotoPetugas/' . $dataWarga->foto_ktp)) {
-                File::delete('fotoPetugas/' . $dataWarga->foto_ktp);
-            }
-            $request->file('foto_ktp')->move('fotoPetugas/', $request->file('foto_ktp')->getClientOriginalName());
-            $dataWarga->foto_ktp = $request->file('foto_ktp')->getClientOriginalName();
-        }
-        $dataWarga->nama_warga   = $request->nama_warga;
-        $dataWarga->nik   = $request->nik;
-        $dataWarga->no_hp   = $request->no_hp;
-        $dataWarga->update();
-        return redirect()->route('grogol.view')->with('Success', 'Update Warga berhasil');
+        //
     }
 
     /**
@@ -113,8 +106,6 @@ class GrogolController extends Controller
      */
     public function destroy($id)
     {
-        $dataWarga = warga::find($id);
-        $dataWarga->delete();
-        return redirect()->route('grogol.view');
+        //
     }
 }
