@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bootslander Bootstrap Template - Index</title>
+  <title>Web Kecamatan Giri</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -71,7 +71,7 @@
       <div class="row justify-content-between">
         <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
           <div data-aos="zoom-out">
-            <h1>DATA WARGA MISKIN NON-DTKS WILAYAH <span>KECAMATAN GIRI</span></h1>
+            <h1>PENGINPUTAN DATA WARGA MISKIN NON-DTKS WILAYAH <span>KECAMATAN GIRI</span></h1>
             <div class="text-center text-lg-start">
               <a href="{{ route('login')}}" class="btn-get-started scrollto">Login</a>
               <a href="{{ route('register')}}" class="btn-get-started scrollto">Register</a>

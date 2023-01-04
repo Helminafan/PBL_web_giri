@@ -10,6 +10,7 @@ use App\Http\Controllers\API\SuratController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\jenissuratController;
+use App\Http\Controllers\API\WargakonohaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +53,14 @@ Route::group(['prefix' => 'jenissur'], function () {
     Route::post('jenissurat/add', [jenissuratController::class, 'add']);
     Route::post('jenissurat/update',[jenissuratController::class, 'update']);
     Route::post('jenissurat/delete',[jenissuratController::class, 'delete']);
+    });
+});
+
+Route::group(['prefix' => 'wargakor'], function () {
+    Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/wargakonoha', [WargakonohaController::class, 'index']);
+    Route::post('wargakonoha/add', [WargakonohaController::class, 'add']);
+    Route::post('wargakonoha/update',[WargakonohaController::class, 'update']);
+    Route::post('wargakonoha/delete',[WargakonohaController::class, 'delete']);
     });
 });
