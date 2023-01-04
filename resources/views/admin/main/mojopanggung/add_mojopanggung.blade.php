@@ -66,10 +66,7 @@
                     required: true,
                     number: true,
                     minlength: 16,
-<<<<<<< HEAD
                   
-=======
->>>>>>> anis
                 },
                 'nama_warga[]': {
                     required: true,
