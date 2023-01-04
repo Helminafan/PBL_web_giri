@@ -39,7 +39,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 //Api
 
-<<<<<<< HEAD
 Route::group(['prefix' => 'jenissur'], function () {
     Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/jenissurat', [jenissuratController::class, 'index']);
@@ -57,5 +56,3 @@ Route::group(['prefix' => 'wargakor'], function () {
     Route::post('wargakonoha/delete',[WargakonohaController::class, 'delete']);
     });
 });
-=======
->>>>>>> 7c1a0040ca192d7b1b0375e0b0d01aeffc888b5e
